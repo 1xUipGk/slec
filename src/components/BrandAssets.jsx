@@ -31,7 +31,6 @@ const logoFormats = [
   }
 ];
 
-// تحديث دالة getLogoPreview
 const getLogoPreview = (variant) => {
   return {
     white: { background: '#333', src: '/src/assets/sunlight-white.png' },

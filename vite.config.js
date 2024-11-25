@@ -1,6 +1,5 @@
 import { defineConfig } from 'vite'
 import react from '@vitejs/plugin-react'
-import { resolve } from 'path'
 
 export default defineConfig({
   plugins: [react()],
@@ -8,31 +7,20 @@ export default defineConfig({
     historyApiFallback: true,
   },
   build: {
+    outDir: 'dist',
+    assetsDir: 'assets',
     rollupOptions: {
-      input: {
-        main: resolve(__dirname, 'index.html'),
-      },
       output: {
-        manualChunks: undefined,
         assetFileNames: (assetInfo) => {
-          let extType = assetInfo.name.split('.').at(1);
+          const info = assetInfo.name.split('.')
+          const extType = info[info.length - 1]
           if (/png|jpe?g|svg|gif|tiff|bmp|ico/i.test(extType)) {
-            extType = 'img';
+            return `assets/images/[name]-[hash][extname]`
           }
-          return `assets/${extType}/[name]-[hash][extname]`;
+          return `assets/[name]-[hash][extname]`
         },
-        chunkFileNames: 'assets/js/[name]-[hash].js',
-        entryFileNames: 'assets/js/[name]-[hash].js',
-      },
-    },
-    assetsInlineLimit: 0,
-    emptyOutDir: true,
-    sourcemap: true
-  },
-  resolve: {
-    alias: {
-      '@': resolve(__dirname, './src'),
-      '@assets': resolve(__dirname, './src/assets')
+      }
     }
-  }
+  },
+  publicDir: 'public'
 })
