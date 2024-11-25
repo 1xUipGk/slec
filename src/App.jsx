@@ -6,6 +6,7 @@ import Footer from './components/Footer';
 import Home from './pages/Home';
 import About from './pages/About';
 import BrandAssets from './pages/BrandAssets';
+import NotFound from './pages/NotFound';
 import Loading from './components/Loading';
 
 function App() {
@@ -32,6 +33,7 @@ function App() {
             <Route path="/" element={<Home />} />
             <Route path="/about" element={<About />} />
             <Route path="/brand" element={<BrandAssets />} />
+            <Route path="*" element={<NotFound />} />
           </Routes>
           <Footer />
         </div>
