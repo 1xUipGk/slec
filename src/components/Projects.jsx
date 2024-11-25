@@ -14,70 +14,40 @@ function Projects() {
   
   const projects = [
     {
-      image: "/public/assets/images/spark-tower.jpg",
+      image: "/src/assets/spark-tower.jpg",
       title: "SPARK TOWER",
       location: t.projectsSection.locations.juffair,
       type: t.projectsSection.types.residential
     },
     {
-      image: "/public/assets/images/dragon-city.jpg",
+      image: "/src/assets/dragon-city.jpg",
       title: "DRAGON CITY APARTMENT",
       location: t.projectsSection.locations.diyar,
       type: t.projectsSection.types.residential
     },
     {
-      image: "/assets/awal-plaza.jpg",
+      image: "/src/assets/awal-plaza.jpg",
       title: "AWAL PLAZA",
       location: t.projectsSection.locations.manama,
       type: t.projectsSection.types.commercial
     },
     {
-      image: "/assets/busaiteen-plus.jpg",
+      image: "/src/assets/busaiteen-plus.jpg",
       title: "BUSAITEEN PLUS",
       location: t.projectsSection.locations.busaiteen,
       type: t.projectsSection.types.residential
     },
     {
-      image: "/assets/busaiteen-one.jpg",
+      image: "/src/assets/busaiteen-one.jpg",
       title: "BUSAITEEN ONE",
       location: t.projectsSection.locations.busaiteen,
       type: t.projectsSection.types.residential
     },
     {
-      image: "/assets/almoallem-mall.jpg",
+      image: "/src/assets/almoallem-mall.jpg",
       title: "ALMOALLEM MALL",
       location: t.projectsSection.locations.diyar,
       type: t.projectsSection.types.commercial
-    },
-    {
-      image: "/src/assets/proposed-15-storey.jpg",
-      title: "PROPOSED 15 STOREY",
-      location: t.projectsSection.locations.seef,
-      type: t.projectsSection.types.residential
-    },
-    {
-      image: "/src/assets/somewhere-tower.jpg",
-      title: "SOMEWHERE TOWER",
-      location: t.projectsSection.locations.burhanah,
-      type: t.projectsSection.types.residential
-    },
-    {
-      image: "/src/assets/al-khalidiya.jpg",
-      title: "AL KHALIDIYA PLAZA",
-      location: t.projectsSection.locations.khalidiya,
-      type: t.projectsSection.types.commercial
-    },
-    {
-      image: "/src/assets/knight-bride.jpg",
-      title: "KNIGHT BRIDE MANSION",
-      location: t.projectsSection.locations.amwaj,
-      type: t.projectsSection.types.residential
-    },
-    {
-      image: "/src/assets/nms-bh-cover-school.jpg",
-      title: "NEW MILLENNIUM SCHOOL",
-      location: t.projectsSection.locations.saqiya,
-      type: t.projectsSection.types.educational
     }
   ];
 

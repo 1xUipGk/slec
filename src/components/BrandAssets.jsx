@@ -4,19 +4,38 @@ const logoFormats = [
     icon: <FaFileAlt />,
     title: t.branding.downloadFormats.eps,
     files: {
-      white: '/assets/logos/sunlight-white.eps',
-      black: '/assets/logos/sunlight-black.eps',
-      color: '/assets/logos/sunlight-color.eps'
+      white: '/src/assets/sunlight-white.eps',
+      black: '/src/assets/sunlight-black.eps',
+      color: '/src/assets/sunlight-color.eps'
     }
   },
-  // ... باقي التنسيقات
+  {
+    id: 'pdf',
+    icon: <FaFilePdf />,
+    title: t.branding.downloadFormats.pdf,
+    files: {
+      white: '/src/assets/sunlight-white.pdf',
+      black: '/src/assets/sunlight-black.pdf',
+      color: '/src/assets/sunlight-color.pdf'
+    }
+  },
+  {
+    id: 'png',
+    icon: <FaFileImage />,
+    title: t.branding.downloadFormats.png,
+    files: {
+      white: '/src/assets/sunlight-white.png',
+      black: '/src/assets/sunlight-black.png',
+      color: '/src/assets/sunlight-color.png'
+    }
+  }
 ];
 
 // تحديث دالة getLogoPreview
 const getLogoPreview = (variant) => {
   return {
-    white: { background: '#333', src: '/assets/logos/sunlight-white.png' },
-    black: { background: '#fff', src: '/assets/logos/sunlight-black.png' },
-    color: { background: '#fff', src: '/assets/logos/sunlight-color.png' }
-  }[variant] || { background: '#fff', src: '/assets/logos/sunlight-color.png' };
+    white: { background: '#333', src: '/src/assets/sunlight-white.png' },
+    black: { background: '#fff', src: '/src/assets/sunlight-black.png' },
+    color: { background: '#fff', src: '/src/assets/sunlight-color.png' }
+  }[variant] || { background: '#fff', src: '/src/assets/sunlight-color.png' };
 }; 
