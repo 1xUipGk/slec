@@ -14,13 +14,13 @@ function Projects() {
   
   const projects = [
     {
-      image: "/assets/spark-tower.jpg",
+      image: "/public/assets/images/spark-tower.jpg",
       title: "SPARK TOWER",
       location: t.projectsSection.locations.juffair,
       type: t.projectsSection.types.residential
     },
     {
-      image: "/assets/dragon-city.jpg",
+      image: "/public/assets/images/dragon-city.jpg",
       title: "DRAGON CITY APARTMENT",
       location: t.projectsSection.locations.diyar,
       type: t.projectsSection.types.residential

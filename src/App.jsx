@@ -37,7 +37,7 @@ function App() {
             <Route path="*" element={<NotFound />} />
           </Routes>
           <Footer />
-          <Analytics />
+          {typeof window !== 'undefined' && <Analytics />}
         </div>
       </LanguageProvider>
     </Router>

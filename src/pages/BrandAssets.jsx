@@ -65,10 +65,10 @@ function BrandAssets() {
 
   const getLogoPreview = (variant) => {
     return {
-      white: { background: '#333', src: '/logos/sunlight-white.png' },
-      black: { background: '#fff', src: '/logos/sunlight-black.png' },
-      color: { background: '#fff', src: '/logos/sunlight-color.png' }
-    }[variant] || { background: '#fff', src: '/logos/sunlight-color.png' };
+      white: { background: '#333', src: '/public/assets/logos/sunlight-white.png' },
+      black: { background: '#fff', src: '/public/assets/logos/sunlight-black.png' },
+      color: { background: '#fff', src: '/public/assets/logos/sunlight-color.png' }
+    }[variant] || { background: '#fff', src: '/public/assets/logos/sunlight-color.png' };
   };
 
   return (
