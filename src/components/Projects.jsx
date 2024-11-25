@@ -14,37 +14,37 @@ function Projects() {
   
   const projects = [
     {
-      image: "/src/assets/spark-tower.jpg",
+      image: "/assets/images/spark-tower.jpg",
       title: "SPARK TOWER",
       location: t.projectsSection.locations.juffair,
       type: t.projectsSection.types.residential
     },
     {
-      image: "/src/assets/dragon-city.jpg",
+      image: "/assets/images/dragon-city.jpg",
       title: "DRAGON CITY APARTMENT",
       location: t.projectsSection.locations.diyar,
       type: t.projectsSection.types.residential
     },
     {
-      image: "/src/assets/awal-plaza.jpg",
+      image: "/assets/images/awal-plaza.jpg",
       title: "AWAL PLAZA",
       location: t.projectsSection.locations.manama,
       type: t.projectsSection.types.commercial
     },
     {
-      image: "/src/assets/busaiteen-plus.jpg",
+      image: "/assets/images/busaiteen-plus.jpg",
       title: "BUSAITEEN PLUS",
       location: t.projectsSection.locations.busaiteen,
       type: t.projectsSection.types.residential
     },
     {
-      image: "/src/assets/busaiteen-one.jpg",
+      image: "/assets/images/busaiteen-one.jpg",
       title: "BUSAITEEN ONE",
       location: t.projectsSection.locations.busaiteen,
       type: t.projectsSection.types.residential
     },
     {
-      image: "/src/assets/almoallem-mall.jpg",
+      image: "/assets/images/almoallem-mall.jpg",
       title: "ALMOALLEM MALL",
       location: t.projectsSection.locations.diyar,
       type: t.projectsSection.types.commercial
