@@ -14,9 +14,9 @@ const logoFormats = [
     icon: <FaFilePdf />,
     title: t.branding.downloadFormats.pdf,
     files: {
-      white: '/src/assets/sunlight-white.pdf',
-      black: '/src/assets/sunlight-black.pdf',
-      color: '/src/assets/sunlight-color.pdf'
+      white: '/logos/sunlight-white.pdf',
+      black: '/logos/sunlight-black.pdf',
+      color: '/logos/sunlight-color.pdf'
     }
   },
   {
@@ -24,9 +24,9 @@ const logoFormats = [
     icon: <FaFileImage />,
     title: t.branding.downloadFormats.png,
     files: {
-      white: '/src/assets/sunlight-white.png',
-      black: '/src/assets/sunlight-black.png',
-      color: '/src/assets/sunlight-color.png'
+      white: '/logos/sunlight-white.png',
+      black: '/logos/sunlight-black.png',
+      color: '/logos/sunlight-color.png'
     }
   }
 ];
