@@ -4,9 +4,9 @@ const logoFormats = [
     icon: <FaFileAlt />,
     title: t.branding.downloadFormats.eps,
     files: {
-      white: '/src/assets/sunlight-white.eps',
-      black: '/src/assets/sunlight-black.eps',
-      color: '/src/assets/sunlight-color.eps'
+      white: '/logos/sunlight-white.eps',
+      black: '/logos/sunlight-black.eps',
+      color: '/logos/sunlight-color.eps'
     }
   },
   {
@@ -33,8 +33,8 @@ const logoFormats = [
 
 const getLogoPreview = (variant) => {
   return {
-    white: { background: '#333', src: '/src/assets/sunlight-white.png' },
-    black: { background: '#fff', src: '/src/assets/sunlight-black.png' },
-    color: { background: '#fff', src: '/src/assets/sunlight-color.png' }
-  }[variant] || { background: '#fff', src: '/src/assets/sunlight-color.png' };
+    white: { background: '#333', src: '/logos/sunlight-white.png' },
+    black: { background: '#fff', src: '/logos/sunlight-black.png' },
+    color: { background: '#fff', src: '/logos/sunlight-color.png' }
+  }[variant] || { background: '#fff', src: '/logos/sunlight-color.png' };
 }; 
