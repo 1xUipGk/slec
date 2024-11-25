@@ -1,7 +1,7 @@
 const Logo = ({ isFooter }) => {
   return (
     <img 
-      src={isFooter ? "/logos/Asset2.svg" : "/logos/Asset6.svg"}
+      src={isFooter ? "/logos/Asset 2.svg" : "/logos/Asset6.svg"}
       alt="سن لايت للمقاولات الكهربائية" 
       className="logo-svg"
     />
