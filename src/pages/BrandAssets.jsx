@@ -13,9 +13,9 @@ function BrandAssets() {
       icon: <FaFileAlt />,
       title: t.branding.downloadFormats.eps,
       files: {
-        white: '/logos/sunlight-white.eps',
-        black: '/logos/sunlight-black.eps',
-        color: '/logos/sunlight-color.eps'
+        white: '/assets/sunlight-white.eps',
+        black: '/assets/sunlight-black.eps',
+        color: '/assets/sunlight-color.eps'
       }
     },
     {
@@ -23,9 +23,9 @@ function BrandAssets() {
       icon: <FaFilePdf />,
       title: t.branding.downloadFormats.pdf,
       files: {
-        white: '/logos/sunlight-white.pdf',
-        black: '/logos/sunlight-black.pdf',
-        color: '/logos/sunlight-color.pdf'
+        white: '/assets/sunlight-white.pdf',
+        black: '/assets/sunlight-black.pdf',
+        color: '/assets/sunlight-color.pdf'
       }
     },
     {
@@ -33,9 +33,9 @@ function BrandAssets() {
       icon: <FaFileImage />,
       title: t.branding.downloadFormats.png,
       files: {
-        white: '/logos/sunlight-white.png',
-        black: '/logos/sunlight-black.png',
-        color: '/logos/sunlight-color.png'
+        white: '/assets/sunlight-white.png',
+        black: '/assets/sunlight-black.png',
+        color: '/assets/sunlight-color.png'
       }
     }
   ];
