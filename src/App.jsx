@@ -9,6 +9,11 @@ import BrandAssets from './pages/BrandAssets';
 import NotFound from './pages/NotFound';
 import Loading from './components/Loading';
 
+// استيراد Analytics بشكل شرطي
+const Analytics = process.env.NODE_ENV === 'production' 
+  ? require('@vercel/analytics/react').Analytics 
+  : () => null;
+
 function App() {
   const [isLoading, setIsLoading] = useState(true);
 
@@ -36,6 +41,7 @@ function App() {
             <Route path="*" element={<NotFound />} />
           </Routes>
           <Footer />
+          {process.env.NODE_ENV === 'production' && <Analytics />}
         </div>
       </LanguageProvider>
     </Router>
