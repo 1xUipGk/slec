@@ -3384,7 +3384,7 @@ main {
   left: 0;
   right: 0;
   bottom: 0;
-  background: url('/path/to/pattern.png');
+  background: url('pattern.png');
   opacity: 0.1;
 }
 
