@@ -3807,3 +3807,98 @@ main {
     font-size: 1.5rem;
   }
 }
+
+/* Loading Styles */
+.loading-container {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--pg-bg);
+}
+
+.loading-content {
+  text-align: center;
+}
+
+.loading-icon {
+  font-size: 3.5rem; /* زيادة حجم الأيقونة قليلاً */
+  color: var(--pg-primary);
+  animation: pulse 1.5s infinite;
+}
+
+@keyframes pulse {
+  0% {
+    transform: scale(1);
+    opacity: 1;
+  }
+  50% {
+    transform: scale(1.2);
+    opacity: 0.7;
+  }
+  100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+/* Scroll To Top Button */
+.scroll-to-top {
+  position: fixed;
+  bottom: 30px;
+  right: 30px;
+  background: var(--pg-primary);
+  color: white;
+  width: 45px;
+  height: 45px;
+  border-radius: 50%; /* يبدأ كدائرة */
+  border: none;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.2rem;
+  transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  z-index: 999;
+  opacity: 0;
+  transform: translateY(100px);
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+}
+
+.scroll-to-top.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.scroll-to-top:hover {
+  background: var(--pg-primary-hover);
+  transform: translateY(-5px) scale(1.05);
+  border-radius: 12px; /* يتحول إلى مربع مع حواف دائرية عند التحويم */
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
+}
+
+.scroll-to-top:active {
+  transform: translateY(-2px) scale(0.95);
+  border-radius: 16px; /* يزيد تقويس الحواف عند الضغط */
+}
+
+[dir="rtl"] .scroll-to-top {
+  right: auto;
+  left: 30px;
+}
+
+/* تحسينات للهاتف */
+@media (max-width: 768px) {
+  .scroll-to-top {
+    bottom: 20px;
+    right: 20px;
+    width: 40px;
+    height: 40px;
+    font-size: 1rem;
+  }
+
+  [dir="rtl"] .scroll-to-top {
+    right: auto;
+    left: 20px;
+  }
+}

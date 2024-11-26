@@ -10,6 +10,7 @@ import BrandAssets from './pages/BrandAssets';
 import NotFound from './pages/NotFound';
 import Loading from './components/Loading';
 import CookieConsent from './components/CookieConsent';
+import ScrollToTop from './components/ScrollToTop';
 
 function App() {
   const [isLoading, setIsLoading] = useState(true);
@@ -39,6 +40,7 @@ function App() {
           </Routes>
           <Footer />
           <CookieConsent />
+          <ScrollToTop />
           {typeof window !== 'undefined' && <Analytics />}
         </div>
       </LanguageProvider>
