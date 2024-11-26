@@ -3902,3 +3902,157 @@ main {
     left: 20px;
   }
 }
+
+/* Links Page Styles */
+.links-page {
+  min-height: 100vh;
+  padding: 2rem 1rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background: linear-gradient(135deg, var(--pg-primary) 0%, #111b3b 100%);
+  color: white;
+}
+
+.links-header {
+  text-align: center;
+  margin-bottom: 3rem;
+  padding: 1rem;
+}
+
+.links-header .logo-svg {
+  width: 120px;
+  height: auto;
+  margin-bottom: 1rem;
+  filter: brightness(0) invert(1);
+}
+
+.links-header h1 {
+  font-size: 1.5rem;
+  margin-bottom: 0.5rem;
+}
+
+.links-header p {
+  font-size: 1rem;
+  opacity: 0.9;
+}
+
+.links-container {
+  width: 100%;
+  max-width: 600px;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  padding: 0 1rem;
+}
+
+.link-card {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  padding: 1rem 1.5rem;
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(10px);
+  border-radius: 12px;
+  color: white;
+  text-decoration: none;
+  transition: all 0.3s ease;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.link-card:hover {
+  transform: translateY(-2px);
+  background: var(--hover-color);
+  border-color: var(--hover-color);
+}
+
+.link-icon {
+  font-size: 1.5rem;
+  min-width: 24px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.link-title {
+  font-size: 1.1rem;
+  font-weight: 500;
+}
+
+.links-footer {
+  margin-top: 3rem;
+  text-align: center;
+  opacity: 0.8;
+  font-size: 0.9rem;
+}
+
+@media (max-width: 480px) {
+  .links-page {
+    padding: 1.5rem 1rem;
+  }
+
+  .links-header h1 {
+    font-size: 1.3rem;
+  }
+
+  .link-card {
+    padding: 0.9rem 1.2rem;
+  }
+
+  .link-icon {
+    font-size: 1.3rem;
+  }
+
+  .link-title {
+    font-size: 1rem;
+  }
+}
+
+/* Links Page English Styles */
+.links-page.english {
+  direction: ltr;
+  text-align: left;
+}
+
+.links-page.english .link-card {
+  flex-direction: row-reverse;
+  direction: ltr;
+  text-align: left;
+  justify-content: flex-end;
+}
+
+.links-page.english .link-icon {
+  margin-left: 0;
+  margin-right: 0;
+}
+
+.links-page.english .links-header {
+  direction: ltr;
+}
+
+.links-page.english .links-header h1,
+.links-page.english .links-header p {
+  font-family: 'Tajawal', sans-serif;
+  letter-spacing: 0.5px;
+}
+
+.links-page.english .link-title {
+  font-family: 'Tajawal', sans-serif;
+  letter-spacing: 0.3px;
+  margin-right: 1rem; /* إضافة مسافة بين النص والأيقونة */
+}
+
+.links-page.english .links-footer p {
+  font-family: 'Tajawal', sans-serif;
+  letter-spacing: 0.3px;
+}
+
+@media (max-width: 480px) {
+  .links-page.english .link-card {
+    padding: 1rem;
+  }
+  
+  .links-page.english .link-title {
+    margin-right: 0.75rem; /* تقليل المسافة في الشاشات الصغيرة */
+  }
+}
