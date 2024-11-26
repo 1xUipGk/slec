@@ -9,6 +9,7 @@ import About from './pages/About';
 import BrandAssets from './pages/BrandAssets';
 import NotFound from './pages/NotFound';
 import Loading from './components/Loading';
+import CookieConsent from './components/CookieConsent';
 
 function App() {
   const [isLoading, setIsLoading] = useState(true);
@@ -37,6 +38,7 @@ function App() {
             <Route path="*" element={<NotFound />} />
           </Routes>
           <Footer />
+          <CookieConsent />
           {typeof window !== 'undefined' && <Analytics />}
         </div>
       </LanguageProvider>
