@@ -19,6 +19,47 @@ function AppContent() {
   const isLinksPage = location.pathname === '/links';
   const isAdminPage = location.pathname === '/studio';
 
+  useEffect(() => {
+    const updateMetaTags = () => {
+      const isEnglish = location.pathname.startsWith('/en');
+      
+      // تحديث Open Graph tags
+      document.querySelector('meta[property="og:title"]').setAttribute(
+        'content',
+        isEnglish ? 'Sunlight Electrical Contracting' : 'سن لايت للمقاولات الكهربائية'
+      );
+      
+      document.querySelector('meta[property="og:description"]').setAttribute(
+        'content',
+        isEnglish 
+          ? 'Professional electrical contracting services in Bahrain since 1994. Specializing in residential, commercial, and industrial electrical installations.'
+          : 'شركة سن لايت للمقاولات الكهربائية، تأسست عام 1994. متخصصون في التركيبات الكهربائية السكنية والتجارية والصناعية وأنظمة إنذار الحريق.'
+      );
+
+      // تحديث Twitter tags
+      document.querySelector('meta[property="twitter:title"]').setAttribute(
+        'content',
+        isEnglish ? 'Sunlight Electrical Contracting' : 'سن لايت للمقاولات الكهربائية'
+      );
+      
+      document.querySelector('meta[property="twitter:description"]').setAttribute(
+        'content',
+        isEnglish 
+          ? 'Professional electrical contracting services in Bahrain since 1994. Specializing in residential, commercial, and industrial electrical installations.'
+          : 'شركة سن لايت للمقاولات الكهربائية، تأسست عام 1994. متخصصون في التركيبات الكهربائية السكنية والتجارية والصناعية وأنظمة إنذار الحريق.'
+      );
+
+      // تحديث URL حسب اللغة
+      const baseUrl = 'https://sunlightec.xyz';
+      const currentUrl = isEnglish ? `${baseUrl}/en` : baseUrl;
+      
+      document.querySelector('meta[property="og:url"]').setAttribute('content', currentUrl);
+      document.querySelector('meta[property="twitter:url"]').setAttribute('content', currentUrl);
+    };
+
+    updateMetaTags();
+  }, [location.pathname]); // تحديث عند تغيير المسار
+
   return (
     <div className="app">
       {!isLinksPage && !isAdminPage && <Header />}

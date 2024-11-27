@@ -1,16 +1,19 @@
 User-agent: *
 Allow: /
+Allow: /en
+Allow: /ar
 
-# Sitemaps
-Sitemap: https://sunlightec.xyz/sitemap.xml
-
-# Disallow
 Disallow: /api/
 Disallow: /admin/
 Disallow: /studio/
+Disallow: /src/
+Disallow: /node_modules/
+Disallow: /.git/
 Disallow: /temp/
 Disallow: /draft/
+Disallow: /*.json$
+Disallow: /*.js$
+Disallow: /*.md$
 
-# Allow language versions
-Allow: /en
-Allow: /ar
+# Sitemaps
+Sitemap: https://sunlightec.xyz/sitemap.xml
