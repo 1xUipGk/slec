@@ -9,6 +9,20 @@ export default defineConfig({
   build: {
     outDir: 'dist',
     assetsDir: 'assets',
+    minify: 'terser',
+    terserOptions: {
+      format: {
+        comments: false,
+      },
+      compress: {
+        drop_console: true,
+        drop_debugger: true
+      }
+    },
+    chunkSizeWarningLimit: 1000,
+    cssCodeSplit: true,
+    sourcemap: false,
+    reportCompressedSize: false,
     rollupOptions: {
       output: {
         assetFileNames: (assetInfo) => {
@@ -19,6 +33,12 @@ export default defineConfig({
           }
           return `assets/[name]-[hash][extname]`
         },
+        compact: true,
+        comments: false,
+        manualChunks: {
+          vendor: ['react', 'react-dom', 'react-router-dom'],
+          icons: ['react-icons']
+        }
       }
     }
   },

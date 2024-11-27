@@ -1,11 +1,41 @@
+# منع عرض محتويات المجلدات
+Options -Indexes
+
+# منع الوصول إلى ملفات معينة
+<FilesMatch "^(\.env|package\.json|package-lock\.json|README\.md)$">
+    Order allow,deny
+    Deny from all
+</FilesMatch>
+
+# منع الوصول إلى مجلدات المصدر
+<DirectoryMatch "^/.*(git|node_modules|src)/.*">
+    Order allow,deny
+    Deny from all
+</DirectoryMatch>
+
+# إعادة توجيه كل الطلبات إلى index.html
 <IfModule mod_rewrite.c>
-  RewriteEngine On
-  RewriteBase /
-  RewriteRule ^index\.html$ - [L]
-  RewriteCond %{REQUEST_FILENAME} !-f
-  RewriteCond %{REQUEST_FILENAME} !-d
-  RewriteCond %{REQUEST_FILENAME} !-l
-  RewriteRule . /index.html [L]
+    RewriteEngine On
+    RewriteBase /
+    RewriteRule ^index\.html$ - [L]
+    RewriteCond %{REQUEST_FILENAME} !-f
+    RewriteCond %{REQUEST_FILENAME} !-d
+    RewriteCond %{REQUEST_FILENAME} !-l
+    RewriteRule . /index.html [L]
+</IfModule>
+
+# ضغط الملفات
+<IfModule mod_deflate.c>
+    AddOutputFilterByType DEFLATE text/html text/plain text/xml text/css text/javascript application/javascript application/x-javascript
+</IfModule>
+
+# تعيين headers الأمان
+<IfModule mod_headers.c>
+    Header set X-Content-Type-Options "nosniff"
+    Header set X-Frame-Options "SAMEORIGIN"
+    Header set X-XSS-Protection "1; mode=block"
+    Header set Referrer-Policy "strict-origin-when-cross-origin"
+    Header set Permissions-Policy "geolocation=(), microphone=(), camera=()"
 </IfModule>
 
 # Enable CORS
@@ -65,4 +95,34 @@ RewriteRule ^ /en [L,R=302]
     ExpiresByType text/css "access plus 1 month"
     ExpiresByType text/javascript "access plus 1 month"
     ExpiresByType application/javascript "access plus 1 month"
+</IfModule>
+
+# منع عرض معلومات الخادم
+ServerSignature Off
+
+# منع تصفح المجلدات
+Options -MultiViews
+Options -Indexes
+
+# حماية الملفات الحساسة
+<FilesMatch "^(\.env|\.git|\.htaccess|package\.json|yarn\.lock|composer\.(json|lock))$">
+    Order allow,deny
+    Deny from all
+</FilesMatch>
+
+# منع الوصول إلى المجلدات الخاصة
+<DirectoryMatch "^/.*(git|node_modules|logs|temp|cache)/.*">
+    Order allow,deny
+    Deny from all
+</DirectoryMatch>
+
+# تعيين Content Security Policy
+<IfModule mod_headers.c>
+    Header set Content-Security-Policy "default-src 'self'; script-src 'self' 'unsafe-inline' 'unsafe-eval' https://www.googletagmanager.com https://www.google-analytics.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; img-src 'self' data: https:; font-src 'self' https://fonts.gstatic.com; connect-src 'self' https://www.google-analytics.com;"
+    Header set Strict-Transport-Security "max-age=31536000; includeSubDomains"
+    Header set X-Content-Type-Options "nosniff"
+    Header set X-Frame-Options "SAMEORIGIN"
+    Header set X-XSS-Protection "1; mode=block"
+    Header set Referrer-Policy "strict-origin-when-cross-origin"
+    Header set Permissions-Policy "geolocation=(), microphone=(), camera=(), payment=()"
 </IfModule> 
