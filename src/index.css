@@ -15,6 +15,8 @@
   --loading-size: 50px;
   --grid-size: 30px;
   --grid-color: rgba(22, 35, 75, 0.04);
+  --main-text-size: 48px;
+  --sub-text-size: 32px;
 }
 
 * {
@@ -1853,7 +1855,7 @@ header {
   }
 }
 
-/* تحسين انتقالات القائ��ة */
+/* تحسين انتقالات القا����ة */
 .nav-links a {
   position: relative;
   overflow: hidden;
@@ -4054,5 +4056,549 @@ main {
   
   .links-page.english .link-title {
     margin-right: 0.75rem; /* تقليل المسافة في الشاشات الصغيرة */
+  }
+}
+
+/* Admin Page Styles */
+.admin-page {
+  min-height: 100vh;
+  background: linear-gradient(135deg, #f5f7fa 0%, #e4e8ec 100%);
+  padding: 2rem;
+}
+
+.admin-header {
+  max-width: 1400px;
+  margin: 0 auto 2rem;
+  padding: 0 1rem;
+}
+
+.admin-header h1 {
+  font-size: 1.8rem;
+  color: var(--pg-title-color);
+  position: relative;
+  display: inline-block;
+}
+
+.admin-header h1::after {
+  content: '';
+  position: absolute;
+  bottom: -8px;
+  left: 0;
+  width: 60px;
+  height: 3px;
+  background: var(--pg-primary);
+  border-radius: 2px;
+}
+
+.editor-container {
+  max-width: 1400px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 320px 1fr;
+  gap: 2rem;
+  height: calc(100vh - 150px);
+}
+
+.editor-sidebar {
+  background: white;
+  border-radius: 16px;
+  padding: 1.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+  overflow-y: auto;
+}
+
+.sidebar-section {
+  border-bottom: 1px solid rgba(0, 0, 0, 0.06);
+  padding-bottom: 1.5rem;
+}
+
+.sidebar-section:last-child {
+  border-bottom: none;
+  padding-bottom: 0;
+  margin-top: auto;
+}
+
+.sidebar-section h3 {
+  font-size: 0.9rem;
+  color: var(--pg-text-secondary);
+  margin-bottom: 1rem;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.tool-buttons {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr); /* تغيير إلى 3 أعمدة */
+  gap: 0.75rem;
+}
+
+.tool-button {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 1rem;
+  border-radius: 12px;
+  border: 1px solid rgba(0, 0, 0, 0.08);
+  background: white;
+  color: var(--pg-text);
+  cursor: pointer;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  font-size: 0.9rem;
+}
+
+.tool-button:hover {
+  background: var(--pg-primary);
+  color: white;
+  border-color: var(--pg-primary);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.tool-button:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+  transform: none;
+}
+
+.tool-button svg {
+  font-size: 1.4rem;
+  width: 24px;
+  height: 24px;
+}
+
+/* تحسين حجم الأيقونة عند التحويم */
+.tool-button:hover svg {
+  transform: scale(1.1);
+  transition: transform 0.2s ease;
+}
+
+.editor-main {
+  background: white;
+  border-radius: 16px;
+  padding: 2rem;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+}
+
+.canvas-container {
+  position: relative;
+  width: 100%;
+  max-width: min(100%, calc(100vh - 200px)); /* يحافظ على الحجم المربعي */
+  aspect-ratio: 1/1; /* يضمن أن يكون العرض = الارتفاع */
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+  background: #f8f9fa;
+}
+
+.canvas-container canvas {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  cursor: move;
+  display: block;
+}
+
+.upload-placeholder {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  text-align: center;
+  color: var(--pg-text-secondary);
+  background: rgba(255, 255, 255, 0.9);
+  padding: 2rem;
+  border-radius: 12px;
+  backdrop-filter: blur(10px);
+  width: 80%;
+  max-width: 300px;
+}
+
+.upload-placeholder svg {
+  font-size: 3rem;
+  margin-bottom: 1rem;
+  color: var(--pg-primary);
+  opacity: 0.8;
+}
+
+.upload-placeholder p {
+  font-size: 1.1rem;
+  line-height: 1.5;
+}
+
+.download-button {
+  width: 100%;
+  padding: 1rem;
+  border-radius: 12px;
+  border: none;
+  background: var(--pg-primary);
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.75rem;
+  cursor: pointer;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  font-size: 1rem;
+  font-weight: 500;
+  font-family: 'Tajawal', sans-serif; /* إضافة الخط */
+}
+
+.download-button span {
+  font-family: 'Tajawal', sans-serif; /* إضافة الخط للنص داخل الزر */
+}
+
+.download-button:hover {
+  background: var(--pg-primary-hover);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+.download-button:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+  transform: none;
+  box-shadow: none;
+}
+
+.zoom-controls {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  background: var(--pg-secondary-bg);
+  padding: 0.75rem;
+  border-radius: 8px;
+}
+
+.zoom-controls button {
+  width: 36px;
+  height: 36px;
+  border-radius: 8px;
+  border: 1px solid var(--pg-border);
+  background: white;
+  color: var(--pg-text);
+  cursor: pointer;
+  transition: all 0.2s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.2rem;
+}
+
+.zoom-controls button:hover {
+  background: var(--pg-primary);
+  color: white;
+  transform: translateY(-1px);
+}
+
+.zoom-controls span {
+  min-width: 60px;
+  text-align: center;
+  font-size: 0.95rem;
+  font-weight: 500;
+  font-family: 'Tajawal', sans-serif;
+  color: var(--pg-text);
+}
+
+@media (max-width: 1024px) {
+  .editor-container {
+    grid-template-columns: 1fr;
+    height: auto;
+    gap: 1.5rem;
+  }
+
+  .editor-sidebar {
+    order: 2;
+  }
+
+  .editor-main {
+    order: 1;
+    padding: 1.5rem;
+  }
+
+  .canvas-container {
+    max-width: min(100%, 600px); /* حد أقصى للحجم في الشاشات الصغيرة */
+    margin: 0 auto;
+  }
+
+  .editor-main {
+    padding: 1rem;
+    height: auto;
+  }
+}
+
+@media (max-width: 768px) {
+  .admin-page {
+    padding: 1rem;
+  }
+
+  .tool-buttons {
+    grid-template-columns: 1fr;
+  }
+
+  .editor-main {
+    padding: 1rem;
+  }
+
+  .adjustment-controls label {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.5rem;
+  }
+}
+
+/* إضافة الخط لجميع النصوص في الأزرار */
+.tool-button span,
+.zoom-controls span,
+.upload-placeholder p {
+  font-family: 'Tajawal', sans-serif;
+}
+
+/* Text Controls Styles */
+.text-controls {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.text-input {
+  width: 100%;
+  padding: 0.75rem;
+  border-radius: 8px;
+  border: 1px solid var(--pg-border);
+  font-family: 'Tajawal', sans-serif;
+  font-size: 0.95rem;
+  transition: all 0.3s ease;
+}
+
+.text-input:focus {
+  outline: none;
+  border-color: var(--pg-primary);
+  box-shadow: 0 0 0 2px rgba(22, 35, 75, 0.1);
+}
+
+.text-options {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.color-picker {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+}
+
+.color-picker span {
+  font-size: 0.9rem;
+  font-family: 'Tajawal', sans-serif;
+}
+
+.color-picker input[type="color"] {
+  width: 40px;
+  height: 40px;
+  padding: 0;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+}
+
+.font-size-control {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.font-size-control span {
+  font-size: 0.9rem;
+  font-family: 'Tajawal', sans-serif;
+  min-width: 45px;
+}
+
+.font-size-control input[type="range"] {
+  flex: 1;
+  height: 4px;
+  -webkit-appearance: none;
+  background: var(--pg-border);
+  border-radius: 2px;
+  outline: none;
+  min: 20;
+  max: 80;
+  value: var(--main-text-size);
+}
+
+.font-size-control input[type="range"]::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  background: var(--pg-primary);
+  cursor: pointer;
+  border: 2px solid white;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+  transition: all 0.2s ease;
+}
+
+.font-size-control input[type="range"]::-webkit-slider-thumb:hover {
+  transform: scale(1.2);
+}
+
+.font-size-control.sub-text input[type="range"] {
+  value: var(--sub-text-size);
+}
+
+.text-group {
+  padding: 1rem;
+  background: white;
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  border-radius: 12px;
+  padding: 1.2rem;
+}
+
+.text-group > span {
+  display: block;
+  font-size: 0.9rem;
+  font-weight: 500;
+  margin-bottom: 0.5rem;
+  font-family: 'Tajawal', sans-serif;
+}
+
+.text-input-container {
+  position: relative;
+  width: 100%;
+}
+
+.text-counter {
+  position: absolute;
+  left: 10px;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 0.8rem;
+  color: var(--pg-text-secondary);
+  opacity: 0.7;
+}
+
+.text-input {
+  padding-left: 60px; /* مساحة لعداد الأحرف */
+}
+
+/* تحديث أسماء الكلاسات */
+.studio-page {
+  min-height: 100vh;
+  background: linear-gradient(135deg, #f5f7fa 0%, #e4e8ec 100%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 2rem;
+  margin-top: 75px; /* إضافة الهامش العلوي */
+}
+
+.editor-container {
+  width: 100%;
+  max-width: 1400px;
+  display: grid;
+  grid-template-columns: 320px 1fr;
+  gap: 2rem;
+  position: relative;
+}
+
+.editor-container > h1 {
+  position: absolute;
+  top: -4rem; /* زيادة المسافة من الأعلى */
+  right: 0;
+  font-size: 1.8rem; /* زيادة حجم الخط */
+  color: var(--pg-text);
+  font-weight: 700; /* جعل الخط أكثر سماكة */
+  margin-bottom: 1.5rem;
+  padding-bottom: 0.75rem; /* إضافة مسافة قبل الخط */
+  position: relative;
+}
+
+.editor-container > h1::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  width: 60px;
+  height: 3px;
+  background: var(--pg-primary);
+  border-radius: 2px;
+  transition: width 0.3s ease;
+}
+
+.editor-container > h1:hover::after {
+  width: 100%; /* تأثير حركي عند التحويم */
+}
+
+/* تحديث التنسيق في الشاشات الصغيرة */
+@media (max-width: 1024px) {
+  .editor-container > h1 {
+    position: static;
+    margin: 0.5rem 0 1.5rem; /* تحسين المسافات */
+    font-size: 1.6rem;
+    text-align: right;
+  }
+}
+
+.editor-sidebar {
+  background: white;
+  border-radius: 16px;
+  padding: 1.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+  overflow-y: auto;
+}
+
+.editor-main {
+  background: white;
+  border-radius: 16px;
+  padding: 2rem;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  min-height: calc(100vh - 8rem);
+}
+
+/* تحسين الريسبونسف */
+@media (max-width: 1024px) {
+  .studio-page {
+    padding: 1rem;
+    align-items: flex-start;
+    margin-top: 60px; /* تقليل الهامش في الشاشات الصغيرة */
+  }
+  
+  .editor-container {
+    grid-template-columns: 1fr;
+    gap: 1rem;
+  }
+
+  .editor-container > h1 {
+    position: static;
+    margin-bottom: 1rem;
+    font-size: 1.4rem;
+  }
+
+  .editor-sidebar {
+    order: 2;
+    max-height: none;
+  }
+
+  .editor-main {
+    order: 1;
+    height: auto;
+    min-height: 500px;
   }
 }

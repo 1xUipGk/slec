@@ -12,24 +12,27 @@ import Loading from './components/Loading';
 import CookieConsent from './components/CookieConsent';
 import ScrollToTop from './components/ScrollToTop';
 import Links from './pages/Links';
+import Admin from './pages/Admin';
 
 function AppContent() {
   const location = useLocation();
   const isLinksPage = location.pathname === '/links';
+  const isAdminPage = location.pathname === '/studio';
 
   return (
     <div className="app">
-      {!isLinksPage && <Header />}
+      {!isLinksPage && !isAdminPage && <Header />}
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/about" element={<About />} />
         <Route path="/brand" element={<BrandAssets />} />
         <Route path="/links" element={<Links />} />
+        <Route path="/studio" element={<Admin />} />
         <Route path="*" element={<NotFound />} />
       </Routes>
-      {!isLinksPage && <Footer />}
-      {!isLinksPage && <CookieConsent />}
-      {!isLinksPage && <ScrollToTop />}
+      {!isLinksPage && !isAdminPage && <Footer />}
+      {!isLinksPage && !isAdminPage && <CookieConsent />}
+      {!isLinksPage && !isAdminPage && <ScrollToTop />}
       {typeof window !== 'undefined' && <Analytics />}
     </div>
   );
