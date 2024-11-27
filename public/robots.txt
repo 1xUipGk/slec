@@ -6,4 +6,11 @@ Sitemap: https://sunlightec.xyz/sitemap.xml
 
 # Disallow
 Disallow: /api/
-Disallow: /admin/ 
+Disallow: /admin/
+Disallow: /studio/
+Disallow: /temp/
+Disallow: /draft/
+
+# Allow language versions
+Allow: /en
+Allow: /ar

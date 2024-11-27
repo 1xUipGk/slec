@@ -2,7 +2,7 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
         xmlns:xhtml="http://www.w3.org/1999/xhtml">
   
-  <!-- الصفحة الرئيسية -->
+  <!-- Homepage -->
   <url>
     <loc>https://sunlightec.xyz/</loc>
     <lastmod>2024-03-25</lastmod>
@@ -12,7 +12,17 @@
     <xhtml:link rel="alternate" hreflang="ar" href="https://sunlightec.xyz/"/>
   </url>
 
-  <!-- صفحة من نحن -->
+  <!-- English Homepage -->
+  <url>
+    <loc>https://sunlightec.xyz/en</loc>
+    <lastmod>2024-03-25</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>1.0</priority>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://sunlightec.xyz/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://sunlightec.xyz/en"/>
+  </url>
+
+  <!-- About Page -->
   <url>
     <loc>https://sunlightec.xyz/about</loc>
     <lastmod>2024-03-25</lastmod>
@@ -22,14 +32,13 @@
     <xhtml:link rel="alternate" hreflang="ar" href="https://sunlightec.xyz/about"/>
   </url>
 
-  <!-- صفحة العلامة التجارية -->
+  <!-- Services Pages -->
   <url>
-    <loc>https://sunlightec.xyz/brand</loc>
+    <loc>https://sunlightec.xyz/services</loc>
     <lastmod>2024-03-25</lastmod>
     <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
-    <xhtml:link rel="alternate" hreflang="en" href="https://sunlightec.xyz/en/brand"/>
-    <xhtml:link rel="alternate" hreflang="ar" href="https://sunlightec.xyz/brand"/>
+    <priority>0.9</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://sunlightec.xyz/en/services"/>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://sunlightec.xyz/services"/>
   </url>
-
 </urlset> 
