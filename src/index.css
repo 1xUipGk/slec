@@ -4602,3 +4602,104 @@ main {
     min-height: 500px;
   }
 }
+
+
+[dir="ltr"] .services-grid {
+  direction: ltr;
+}
+
+/* تحسين الريسبونسف للاستوديو */
+@media (max-width: 1024px) {
+  .studio-page {
+    padding: 1rem;
+    align-items: flex-start;
+    margin-top: 60px;
+  }
+  
+  .editor-container {
+    grid-template-columns: 1fr;
+    gap: 1rem;
+  }
+
+  .editor-container > h1 {
+    position: static;
+    margin-bottom: 1rem;
+    font-size: 1.4rem;
+  }
+
+  .editor-sidebar {
+    order: 2;
+    max-height: none;
+  }
+
+  .editor-main {
+    order: 1;
+    height: auto;
+    min-height: 300px; /* تقليل الارتفاع الأدنى */
+    padding: 0.5rem; /* تقليل الحشو */
+  }
+
+  /* تحسين حاوية الكانفاس للهاتف */
+  .canvas-container {
+    width: 100%;
+    height: 100%;
+    max-width: 100%;
+    aspect-ratio: 1/1;
+    touch-action: none; /* تحسين التفاعل باللمس */
+  }
+
+  /* تحسين تجربة التحريك في الهاتف */
+  .canvas-container canvas {
+    touch-action: none;
+    user-select: none;
+    -webkit-user-select: none;
+    -webkit-touch-callout: none;
+    cursor: move;
+  }
+
+  /* تحسين أزرار التحكم للهاتف */
+  .tool-buttons {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 0.5rem;
+  }
+
+  .tool-button {
+    padding: 0.75rem;
+    font-size: 0.85rem;
+  }
+
+  /* تحسين التحكم بالتكبير/التصغير */
+  .zoom-controls {
+    padding: 0.5rem;
+    gap: 0.5rem;
+  }
+
+  .zoom-controls button {
+    width: 32px;
+    height: 32px;
+    font-size: 1rem;
+  }
+
+  /* تحسين حجم النص في الهاتف */
+  .text-input {
+    font-size: 0.9rem;
+    padding: 0.5rem;
+  }
+
+  /* تحسين أزرار التنزيل في الهاتف */
+  .download-button {
+    padding: 0.75rem;
+    font-size: 0.9rem;
+  }
+}
+
+/* إضافة دعم للمس */
+@media (hover: none) and (pointer: coarse) {
+  .canvas-container {
+    touch-action: none;
+  }
+
+  .canvas-container canvas {
+    touch-action: none;
+  }
+}

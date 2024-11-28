@@ -53,9 +53,7 @@ const getServiceIcon = (index) => {
   const icons = [
     <FaHome className="service-icon" />,
     <FaIndustry className="service-icon" />,
-    <FaBell className="service-icon" />,
     <FaLightbulb className="service-icon" />,
-    <FaShieldAlt className="service-icon" />,
     <FaTools className="service-icon" />
   ];
   return icons[index];

@@ -27,34 +27,27 @@ export const translations = {
 
     // Services Section
     servicesSection: {
-      title: "خدماتنا الكهربائية",
-      showMore: "عرض المزيد من الخدمات",
+      title: "خدماتنا",
+      subtitle: "نقدم خدمات كهربائية متكاملة",
       services: [
         {
           title: "التركيبات السكنية",
-          description: `خبرة ${experienceYears} عاماً في المجال السكني مع الالتزام بمعايير EDD. نقدم حلولاً عملية وبسيطة تلبي احتياجات العملاء`
+          description: "تركيب وصيانة التمديدات الكهربائية للمنازل والشقق السكنية"
         },
         {
           title: "التركيبات الصناعية",
-          description: "خبرة في المشاريع الصناعية مثل أنظمة الحماية من الانفجار والمشاريع البحرية والمصانع والمستودعات"
+          description: "تركيب وصيانة الأنظمة الكهربائية للمصانع والمنشآت الصناعية"
         },
         {
-          title: "أنظمة إنذار الحريق",
-          description: "تركيب وصيانة أنظمة إنذار الحريق المتطورة والتقليدية وفق معايير الدفاع المدني في البحرين"
+          title: "أنظمة الإضاءة",
+          description: "تركيب وبرمجة أنظمة الإضاءة الذكية والتقليدية"
         },
         {
-          title: "أنظمة التحكم بالإضاءة",
-          description: "تركيب أحدث أنظمة التحكم بالإضاءة وأتمتة المباني مع مواكبة التطور التكنولوجي في السوق"
-        },
-        {
-          title: "أنظمة الأمن والحماية",
-          description: "تركيب كاميرات المراقبة وأجهزة الإنذار وحواجز المرور وأنظمة التحكم بالدخول"
-        },
-        {
-          title: "الدعم الفني",
-          description: "خدمة دعم فني على مدار الساعة مع حلول عملية وتقنية لجميع المشاكل الكهربائية"
+          title: "خدمات الصيانة",
+          description: "صيانة دورية وطارئة لجميع الأنظمة الكهربائية"
         }
-      ]
+      ],
+      showMore: "عرض المزيد"
     },
 
     // Projects Section
@@ -156,8 +149,8 @@ export const translations = {
         title: "التراخيص والاعتمادات",
         edd: "رخصة هيئة الكهرباء والماء",
         cr: "السجل التجاري",
-        grade: "الدرجة الثانية",
-        capacity: "قدرة تحميل 1,500 كيلوواط"
+        grade: "الدرجة الثالثة",
+        capacity: "قدرة تحميل 500 كيلوواط"
       },
 
       // إضافة قسم الفريق
@@ -209,34 +202,27 @@ export const translations = {
 
     // Services Section
     servicesSection: {
-      title: "Our Electrical Services",
-      showMore: "Show More Services",
+      title: "Our Services",
+      subtitle: "We provide comprehensive electrical services",
       services: [
         {
           title: "Residential Installations",
-          description: `${experienceYears} years of experience in residential sector with EDD standards compliance. We provide practical solutions that meet customer needs`
+          description: "Installation and maintenance of electrical systems for homes and apartments"
         },
         {
           title: "Industrial Installations",
-          description: "Experience in industrial projects including explosion protection systems, marine projects, factories and warehouses"
+          description: "Installation and maintenance of electrical systems for factories and industrial facilities"
         },
         {
-          title: "Fire Alarm Systems",
-          description: "Installation and maintenance of advanced and conventional fire alarm systems according to Bahrain Civil Defense standards"
+          title: "Lighting Systems",
+          description: "Installation and programming of smart and traditional lighting systems"
         },
         {
-          title: "Lighting Control Systems",
-          description: "Installation of latest lighting control systems and building automation with keeping pace with market technology"
-        },
-        {
-          title: "Security Systems",
-          description: "Installation of CCTV cameras, alarm devices, traffic barriers and access control systems"
-        },
-        {
-          title: "Technical Support",
-          description: "24/7 technical support service with practical and technical solutions for all electrical problems"
+          title: "Maintenance Services",
+          description: "Regular and emergency maintenance for all electrical systems"
         }
-      ]
+      ],
+      showMore: "Show More"
     },
 
     // Projects Section
@@ -338,8 +324,8 @@ export const translations = {
         title: "Licenses & Certifications",
         edd: "EDD License",
         cr: "Commercial Registration",
-        grade: "Grade Two",
-        capacity: "Load Capacity 1,500 Kw"
+        grade: "Grade Three",
+        capacity: "Load Capacity 500 Kw"
       },
 
       // Add team section
