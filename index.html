@@ -130,7 +130,8 @@
         }
       };
 
-      document.addEventListener('DOMContentLoaded', function() {
+      // تحديث Meta Tags
+      function updateMetaTags() {
         const currentYear = new Date().getFullYear();
         const yearsOfExperience = currentYear - 1994;
         
@@ -142,23 +143,55 @@
         const basePath = isEnglish ? path.replace('/en', '') : path;
         const lang = isEnglish ? 'en' : 'ar';
         
+        // الحصول على البيانات الوصفية للصفحة الحالية
         const meta = pageMeta[basePath]?.[lang];
+        
         if (meta) {
-          // تحديث title و meta tags
+          // تحديث العنوان
           document.title = meta.title;
           
-          const descriptionTag = document.querySelector('meta[name="description"]');
-          const ogDescriptionTag = document.querySelector('meta[property="og:description"]');
+          // تحديث وصف الصفحة
+          const descriptionTags = [
+            document.querySelector('meta[name="description"]'),
+            document.querySelector('meta[property="og:description"]'),
+            document.querySelector('meta[name="twitter:description"]')
+          ];
           
-          if (descriptionTag) {
-            descriptionTag.content = meta.description.replace('{years}', yearsOfExperience);
-          }
+          descriptionTags.forEach(tag => {
+            if (tag) {
+              tag.content = (tag.getAttribute('property') === 'og:description' ? meta.ogDescription : meta.description)
+                .replace('{years}', yearsOfExperience);
+            }
+          });
           
-          if (ogDescriptionTag) {
-            ogDescriptionTag.content = meta.ogDescription.replace('{years}', yearsOfExperience);
-          }
+          // تحديث عنوان Open Graph و Twitter
+          const titleTags = [
+            document.querySelector('meta[property="og:title"]'),
+            document.querySelector('meta[name="twitter:title"]')
+          ];
+          
+          titleTags.forEach(tag => {
+            if (tag) tag.content = meta.title;
+          });
+
+          // تحديث URL
+          const urlTags = [
+            document.querySelector('meta[property="og:url"]'),
+            document.querySelector('meta[name="twitter:url"]')
+          ];
+          
+          const fullUrl = `https://sunlightec.xyz${path}`;
+          urlTags.forEach(tag => {
+            if (tag) tag.content = fullUrl;
+          });
         }
-      });
+      }
+
+      // تحديث Meta Tags عند تحميل الصفحة
+      document.addEventListener('DOMContentLoaded', updateMetaTags);
+      
+      // تحديث Meta Tags عند تغيير المسار (للتطبيقات أحادية الصفحة)
+      window.addEventListener('popstate', updateMetaTags);
     </script>
   </head>
   <body>
