@@ -4703,3 +4703,85 @@ main {
     touch-action: none;
   }
 }
+
+/* Redirect Page Styles */
+.redirect-page {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--pg-bg);
+}
+
+.redirect-content {
+  text-align: center;
+}
+
+.redirect-content p {
+  margin-top: 1rem;
+  color: var(--pg-text);
+  font-size: 1.1rem;
+}
+
+.loading-spinner {
+  width: 40px;
+  height: 40px;
+  border: 3px solid var(--pg-border);
+  border-top-color: var(--pg-primary);
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+  margin: 0 auto;
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/* تحديث التوجيه للغة الإنجليزية */
+[dir="ltr"] .team-info {
+  direction: ltr;
+}
+
+[dir="ltr"] .studio-page {
+  direction: ltr;
+}
+
+[dir="ltr"] .editor-container {
+  direction: ltr;
+}
+
+[dir="ltr"] .editor-sidebar {
+  direction: ltr;
+}
+
+[dir="ltr"] .tool-buttons {
+  direction: ltr;
+}
+
+[dir="ltr"] .text-controls {
+  direction: ltr;
+}
+
+[dir="ltr"] .text-input {
+  direction: ltr;
+  text-align: left;
+}
+
+[dir="ltr"] .text-counter {
+  left: auto;
+  right: 10px;
+}
+
+[dir="ltr"] .color-picker {
+  direction: ltr;
+}
+
+[dir="ltr"] .font-size-control {
+  direction: ltr;
+}
+
+[dir="ltr"] .zoom-controls {
+  direction: ltr;
+}

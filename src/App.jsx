@@ -13,62 +13,35 @@ import CookieConsent from './components/CookieConsent';
 import ScrollToTop from './components/ScrollToTop';
 import Links from './pages/Links';
 import Admin from './pages/Admin';
+import Redirect from './pages/Redirect';
+import ScrollToHash from './components/ScrollToHash';
 
 function AppContent() {
   const location = useLocation();
-  const isLinksPage = location.pathname === '/links';
-  const isAdminPage = location.pathname === '/studio';
-
-  useEffect(() => {
-    const updateMetaTags = () => {
-      const isEnglish = location.pathname.startsWith('/en');
-      
-      // تحديث Open Graph tags
-      document.querySelector('meta[property="og:title"]').setAttribute(
-        'content',
-        isEnglish ? 'Sunlight Electrical Contracting' : 'سن لايت للمقاولات الكهربائية'
-      );
-      
-      document.querySelector('meta[property="og:description"]').setAttribute(
-        'content',
-        isEnglish 
-          ? 'Professional electrical contracting services in Bahrain since 1994. Specializing in residential, commercial, and industrial electrical installations.'
-          : 'شركة سن لايت للمقاولات الكهربائية، تأسست عام 1994. متخصصون في التركيبات الكهربائية السكنية والتجارية والصناعية وأنظمة إنذار الحريق.'
-      );
-
-      // تحديث Twitter tags
-      document.querySelector('meta[property="twitter:title"]').setAttribute(
-        'content',
-        isEnglish ? 'Sunlight Electrical Contracting' : 'سن لايت للمقاولات الكهربائية'
-      );
-      
-      document.querySelector('meta[property="twitter:description"]').setAttribute(
-        'content',
-        isEnglish 
-          ? 'Professional electrical contracting services in Bahrain since 1994. Specializing in residential, commercial, and industrial electrical installations.'
-          : 'شركة سن لايت للمقاولات الكهربائية، تأسست عام 1994. متخصصون في التركيبات الكهربائية السكنية والتجارية والصناعية وأنظمة إنذار الحريق.'
-      );
-
-      // تحديث URL حسب اللغة
-      const baseUrl = 'https://sunlightec.xyz';
-      const currentUrl = isEnglish ? `${baseUrl}/en` : baseUrl;
-      
-      document.querySelector('meta[property="og:url"]').setAttribute('content', currentUrl);
-      document.querySelector('meta[property="twitter:url"]').setAttribute('content', currentUrl);
-    };
-
-    updateMetaTags();
-  }, [location.pathname]); // تحديث عند تغيير المسار
+  const isLinksPage = location.pathname === '/links' || location.pathname === '/en/links';
+  const isAdminPage = location.pathname === '/studio' || location.pathname === '/en/studio';
 
   return (
     <div className="app">
+      <ScrollToHash />
       {!isLinksPage && !isAdminPage && <Header />}
       <Routes>
+        {/* Arabic Routes */}
         <Route path="/" element={<Home />} />
         <Route path="/about" element={<About />} />
         <Route path="/brand" element={<BrandAssets />} />
         <Route path="/links" element={<Links />} />
         <Route path="/studio" element={<Admin />} />
+        <Route path="/redirect" element={<Redirect />} />
+
+        {/* English Routes */}
+        <Route path="/en" element={<Home />} />
+        <Route path="/en/about" element={<About />} />
+        <Route path="/en/brand" element={<BrandAssets />} />
+        <Route path="/en/links" element={<Links />} />
+        <Route path="/en/studio" element={<Admin />} />
+
+        {/* 404 Page */}
         <Route path="*" element={<NotFound />} />
       </Routes>
       {!isLinksPage && !isAdminPage && <Footer />}

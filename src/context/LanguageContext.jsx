@@ -7,35 +7,57 @@ export const LanguageProvider = ({ children }) => {
   const location = useLocation();
   const navigate = useNavigate();
   
-  // تحقق من وجود معلمة اللغة في الرابط
-  const getLanguageFromURL = () => {
-    const params = new URLSearchParams(location.search);
-    const urlLang = params.get('hl');
-    if (urlLang === 'ar' || urlLang === 'en') {
-      return urlLang;
-    }
-    return localStorage.getItem('language') || 'ar';
+  // تحديد اللغة من المسار
+  const getLanguageFromPath = () => {
+    return location.pathname.startsWith('/en') ? 'en' : 'ar';
   };
 
-  const [language, setLanguage] = useState(getLanguageFromURL);
+  const [language, setLanguage] = useState(() => {
+    // استخدام اللغة المخزنة أو اللغة من المسار
+    const savedLang = localStorage.getItem('language');
+    const pathLang = getLanguageFromPath();
+    return savedLang || pathLang;
+  });
 
-  // تحديث الرابط عند تغيير اللغة
+  // تحديث المسار عند تغيير اللغة
   const handleLanguageChange = (newLang) => {
-    const params = new URLSearchParams(location.search);
-    params.set('hl', newLang);
-    navigate({ search: params.toString() });
+    const currentPath = location.pathname;
+    let newPath;
+
+    if (newLang === 'en') {
+      // التحويل للإنجليزية
+      if (currentPath === '/') {
+        newPath = '/en';
+      } else {
+        newPath = currentPath.startsWith('/en') 
+          ? currentPath 
+          : `/en${currentPath}`;
+      }
+    } else {
+      // التحويل للعربية
+      newPath = currentPath.replace('/en', '');
+    }
+
+    navigate(newPath);
     setLanguage(newLang);
     localStorage.setItem('language', newLang);
+    document.documentElement.dir = newLang === 'ar' ? 'rtl' : 'ltr';
+    document.documentElement.lang = newLang;
   };
 
-  // الاستماع لتغييرات الرابط
+  // التأكد من تطابق المسار مع اللغة المحددة
   useEffect(() => {
-    const urlLang = getLanguageFromURL();
-    if (urlLang !== language) {
-      setLanguage(urlLang);
-      localStorage.setItem('language', urlLang);
+    const currentPath = location.pathname;
+    const isEnglishPath = currentPath.startsWith('/en');
+    const shouldBeEnglish = language === 'en';
+
+    // تصحيح المسار إذا كان غير متطابق مع اللغة
+    if (shouldBeEnglish && !isEnglishPath) {
+      navigate(currentPath === '/' ? '/en' : `/en${currentPath}`);
+    } else if (!shouldBeEnglish && isEnglishPath) {
+      navigate(currentPath.replace('/en', ''));
     }
-  }, [location.search]);
+  }, [location.pathname, language]);
 
   return (
     <LanguageContext.Provider value={{ language, setLanguage: handleLanguageChange }}>
