@@ -233,6 +233,35 @@
 
     <meta data-page="/en/brand" name="description" content="Sunlight Electrical Contracting brand identity - Download our logo in various formats and sizes for use in marketing materials." />
     <meta data-page="/en/brand" property="og:description" content="Sunlight Electrical Contracting brand assets - Logo available in EPS, PDF, PNG formats and different color variations." />
+
+    <!-- إضافة السكريبت قبل نهاية head -->
+    <script>
+      document.addEventListener('DOMContentLoaded', function() {
+        // تحديث السنوات
+        const currentYear = new Date().getFullYear();
+        const yearsOfExperience = currentYear - 1994;
+        
+        // الحصول على المسار الحالي
+        const path = window.location.pathname.endsWith('/') 
+          ? window.location.pathname.slice(0, -1) 
+          : window.location.pathname;
+
+        // تحديث meta tags حسب المسار
+        const metaTags = document.querySelectorAll('meta[data-page]');
+        metaTags.forEach(meta => {
+          // إخفاء جميع meta tags أولاً
+          meta.remove();
+          
+          // إظهار meta tags المناسبة للصفحة الحالية
+          if (meta.dataset.page === path || 
+              (path === '' && meta.dataset.page === '/')) {
+            // تحديث محتوى meta tag
+            meta.content = meta.content.replace(/{currentYear - 1994}/g, yearsOfExperience);
+            document.head.appendChild(meta);
+          }
+        });
+      });
+    </script>
   </head>
   <body>
     <div id="root"></div>
