@@ -148,9 +148,34 @@ function Studio() {
     }
   };
 
+  // تحديث قائمة الصيغ المدعومة
+  const supportedFormats = [
+    "image/jpeg", "image/png", "image/gif", "image/bmp", "image/tiff",
+    "image/webp", "image/heic", "image/heif", "image/svg+xml",
+    // RAW formats
+    ".3fr", ".arw", ".cr2", ".crw", ".dcr", ".dng", ".erf", ".kdc",
+    ".mef", ".mrw", ".nef", ".nrw", ".orf", ".pef", ".raf", ".raw",
+    ".rw2", ".sr2", ".srf", ".x3f",
+    // Other formats
+    ".avif", ".cur", ".dcm", ".dds", ".exr", ".hdr", ".ico",
+    ".jfif", ".jp2", ".jps", ".pcd", ".pcx", ".pict", ".psd",
+    ".sgi", ".tga", ".wbmp", ".wpg", ".xcf", ".yuv"
+  ];
+
   const handleImageUpload = (e) => {
     const file = e.target.files[0];
     if (file) {
+      // التحقق من امتداد الملف
+      const fileExtension = `.${file.name.split('.').pop().toLowerCase()}`;
+      const mimeType = file.type.toLowerCase();
+
+      if (!supportedFormats.includes(mimeType) && !supportedFormats.includes(fileExtension)) {
+        alert(language === 'ar' 
+          ? 'صيغة الملف غير مدعومة. الرجاء اختيار صورة بصيغة مدعومة.'
+          : 'File format not supported. Please choose a supported image format.');
+        return;
+      }
+
       const reader = new FileReader();
       reader.onload = (e) => {
         const img = new Image();
@@ -159,6 +184,8 @@ function Studio() {
           // إعادة تعيين الموضع والحجم
           setImagePosition({ x: 0, y: 0 });
           setScale(1);
+          // تطبيق الاحتواء التلقائي
+          handleContainImage();
         };
         img.src = e.target.result;
       };
@@ -293,6 +320,50 @@ function Studio() {
     </svg>
   );
 
+  // تحديث نص زر الرفع ليشمل الصيغ المدعومة
+  const getUploadButtonText = () => {
+    return language === 'ar'
+      ? "رفع صورة"
+      : "Upload Image";
+  };
+
+  // إضافة دالة للتوسيط فقط
+  const handleCenterOnly = () => {
+    if (!uploadedImage) return;
+    
+    // توسيط الصورة أفقياً
+    const centerX = (CANVAS_SIZE - uploadedImage.width * scale) / 2;
+    setImagePosition(prev => ({
+      ...prev,
+      x: centerX
+    }));
+  };
+
+  // إضافة دالة للتوسيط الرأسي
+  const handleVerticalCenter = () => {
+    if (!uploadedImage) return;
+    
+    // توسيط الصورة رأسياً
+    const centerY = (CANVAS_SIZE - uploadedImage.height * scale) / 2;
+    setImagePosition(prev => ({
+      ...prev,
+      y: centerY
+    }));
+  };
+
+  // إضافة أيقونات التوسيط المخصصة من Google Icons
+  const HorizontalCenterIcon = () => (
+    <svg xmlns="http://www.w3.org/2000/svg" height="24" viewBox="0 -960 960 960" width="24" fill="currentColor">
+      <path d="M440-800v240h-80v-240h80Zm160 0v240h-80v-240h80ZM200-480h560v-80H200v80Zm240 320v-240h80v240h-80Zm-80 0v-240h-80v240h80Z"/>
+    </svg>
+  );
+
+  const VerticalCenterIcon = () => (
+    <svg xmlns="http://www.w3.org/2000/svg" height="24" viewBox="0 -960 960 960" width="24" fill="currentColor">
+      <path d="M160-520v80h160v160h80v-160h160v160h80v-160h160v-80H640v-160h-80v160H400v-160h-80v160H160Z"/>
+    </svg>
+  );
+
   return (
     <div className="studio-page">
       <div className="editor-container">
@@ -302,10 +373,10 @@ function Studio() {
             <div className="tool-buttons">
               <label className="tool-button">
                 <FaUpload />
-                <span>{t.upload}</span>
+                <span>{getUploadButtonText()}</span>
                 <input
                   type="file"
-                  accept="image/*"
+                  accept="image/*,.3fr,.arw,.cr2,.crw,.dcr,.dng,.erf,.kdc,.mef,.mrw,.nef,.nrw,.orf,.pef,.raf,.raw,.rw2,.sr2,.srf,.x3f,.avif,.cur,.dcm,.dds,.exr,.hdr,.ico,.jfif,.jp2,.jps,.pcd,.pcx,.pict,.psd,.sgi,.tga,.wbmp,.wpg,.xcf,.yuv"
                   onChange={handleImageUpload}
                   hidden
                 />
@@ -315,25 +386,39 @@ function Studio() {
                 className="tool-button"
                 onClick={handleReset}
                 disabled={!uploadedImage}
+                title={language === 'ar' ? "إعادة تعيين الصورة" : "Reset Image"}
               >
                 <FaUndo />
                 <span>{t.reset}</span>
               </button>
 
+              {/* زر التوسيط الأفقي */}
               <button 
                 className="tool-button"
-                onClick={handleCenterImage}
+                onClick={handleCenterOnly}
                 disabled={!uploadedImage}
-                title="محاذاة للمركز"
+                title={language === 'ar' ? "توسيط أفقي" : "Center Horizontally"}
               >
-                <CenterIcon />
-                <span>{t.center}</span>
+                <HorizontalCenterIcon />
+                <span>{language === 'ar' ? "توسيط أفقي" : "Center H"}</span>
+              </button>
+
+              {/* زر التوسيط الرأسي */}
+              <button 
+                className="tool-button"
+                onClick={handleVerticalCenter}
+                disabled={!uploadedImage}
+                title={language === 'ar' ? "توسيط رأسي" : "Center Vertically"}
+              >
+                <VerticalCenterIcon />
+                <span>{language === 'ar' ? "توسيط رأسي" : "Center V"}</span>
               </button>
 
               <button 
                 className="tool-button"
                 onClick={handleContainImage}
                 disabled={!uploadedImage}
+                title={language === 'ar' ? "احتواء الصورة مع الحفاظ على النسب" : "Contain Image"}
               >
                 <FaCompressAlt />
                 <span>{t.contain}</span>
@@ -343,19 +428,10 @@ function Studio() {
                 className="tool-button"
                 onClick={handleCoverImage}
                 disabled={!uploadedImage}
+                title={language === 'ar' ? "تغطية كامل الإطار" : "Cover Frame"}
               >
-                <FaExpandAlt />
+                <FaObjectGroup />
                 <span>{t.cover}</span>
-              </button>
-
-              <button 
-                className="tool-button"
-                onClick={handleFitToFrame}
-                disabled={!uploadedImage}
-                title="ملء الإطار"
-              >
-                <FitFrameIcon />
-                <span>{t.fit}</span>
               </button>
             </div>
           </div>

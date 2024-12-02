@@ -117,7 +117,7 @@ export const translations = {
     about: {
       nav: "من نحن",
       title: "من نحن",
-      description: "تأسست سن لايت للمقاولات الكهربائية عام 1994، وما زالت رائدة ومرجعاً في سوق المقاولات الكهربائية. تتجسد رؤيتنا المستقبلية في الارتقاء بخدماتنا في مجال المقاولات الكهربائية، لنصبح الخيار الأول والأفضل للعملاء في مملكة البحرين.",
+      description: "شركة سن لايت للمقاولات الكهربائية، تأسست عام 1994 في مملكة البحرين. نقدم خدمات التركيبات الكهربائية للمشاريع السكنية والتجارية والصناعية بأعلى معايير الجودة والأمان.",
 
       vision: {
         title: "رؤيتنا",
@@ -168,9 +168,9 @@ export const translations = {
     branding: {
       nav: "الهوية المؤسسية",
       title: "الهوية المؤسسية",
-      description: "يمكنك تحميل شعار سن لايت للمقاولات الكهربائية بمختلف الصيغ والأحجام",
-      logoTitle: "شعار الشركة",
-      logoDescription: "متوفر بصيغ مختلفة للاستخدام في جميع المواد التسويقية",
+      description: "شعار سن لايت متوفر بعدة صيغ وأحجام للاستخدام في المواد التسويقية والمطبوعات",
+      logoTitle: "شعار سن لايت",
+      logoDescription: "يمكنك تحميل الشعار بالصيغ التالية",
       downloadFormats: {
         ai: "ملف Adobe Illustrator",
         eps: "ملف EPS للطباعة",
@@ -180,6 +180,13 @@ export const translations = {
         black: "نسخة سوداء",
         color: "نسخة ملونة"
       }
+    },
+
+    // Links Section
+    links: {
+      title: "سن لايت للمقاولات الكهربائية",
+      description: "خدمات كهربائية متكاملة في مملكة البحرين",
+      footer: "جميع الحقوق محفوظة"
     }
   },
   
@@ -292,7 +299,7 @@ export const translations = {
     about: {
       nav: "About Us",
       title: "About Us",
-      description: "Sunlight Electrical Contracting was established in 1994 and continues to be a leader and reference in the electrical contracting market. Our future vision is embodied in elevating our services in the field of electrical contracting, to become the first and best choice for customers in the Kingdom of Bahrain.",
+      description: "Sunlight Electrical Contracting, established in 1994 in the Kingdom of Bahrain. We provide electrical installation services for residential, commercial, and industrial projects with the highest standards of quality and safety.",
 
       vision: {
         title: "Our Vision",
@@ -343,9 +350,9 @@ export const translations = {
     branding: {
       nav: "Brand Assets",
       title: "Brand Assets",
-      description: "You can download the Sunlight Electrical Contracting logo in various formats and sizes",
-      logoTitle: "Company Logo",
-      logoDescription: "Available in various formats for use in all marketing materials",
+      description: "Sunlight logo is available in various formats and sizes for use in marketing materials and prints",
+      logoTitle: "Sunlight Logo",
+      logoDescription: "You can download the logo in the following formats",
       downloadFormats: {
         ai: "Adobe Illustrator File",
         eps: "EPS for Printing",
@@ -355,6 +362,13 @@ export const translations = {
         black: "Black Version",
         color: "Color Version"
       }
+    },
+
+    // Links Section
+    links: {
+      title: "Sunlight Electrical Contracting",
+      description: "Comprehensive electrical services in Bahrain",
+      footer: "All Rights Reserved"
     }
   }
 }; 
