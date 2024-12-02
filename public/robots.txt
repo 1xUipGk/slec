@@ -15,5 +15,15 @@ Disallow: /*.json$
 Disallow: /*.js$
 Disallow: /*.md$
 
+# Allow images
+Allow: /*.jpg$
+Allow: /*.jpeg$
+Allow: /*.png$
+Allow: /*.gif$
+Allow: /*.svg$
+
+# Crawl delay
+Crawl-delay: 10
+
 # Sitemaps
 Sitemap: https://sunlightec.xyz/sitemap.xml

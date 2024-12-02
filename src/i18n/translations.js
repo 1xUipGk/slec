@@ -7,6 +7,42 @@ const calculateExperience = () => {
 
 const experienceYears = calculateExperience();
 
+// إضافة كلمات مفتاحية جديدة
+const keywords = {
+  ar: [
+    "مقاولات كهربائية البحرين",
+    "تركيبات كهربائية المنامة",
+    "صيانة كهربائية البحرين",
+    "مقاول كهرباء معتمد",
+    "شركة كهرباء البحرين",
+    "تركيبات كهربائية منزلية",
+    "تركيبات كهربائية تجارية",
+    "تركيبات كهربائية صناعية",
+    "صيانة دورية كهرباء",
+    "خدمات كهربائية البحرين",
+    "سن لايت للمقاولات",
+    "أفضل مقاول كهرباء البحرين",
+    "تصليح كهرباء البحرين",
+    "تركيب إضاءة البحرين"
+  ],
+  en: [
+    "electrical contractor bahrain",
+    "electrical services manama",
+    "electrical maintenance bahrain",
+    "certified electrician bahrain",
+    "electrical company bahrain",
+    "residential electrical installations",
+    "commercial electrical services",
+    "industrial electrical work",
+    "electrical maintenance services",
+    "electrical solutions bahrain",
+    "sunlight electrical contracting",
+    "best electrician bahrain",
+    "electrical repair bahrain",
+    "lighting installation bahrain"
+  ]
+};
+
 export const translations = {
   ar: {
     // Header & Navigation
