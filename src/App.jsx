@@ -15,148 +15,99 @@ import Links from './pages/Links';
 import Admin from './pages/Admin';
 import Redirect from './pages/Redirect';
 import ScrollToHash from './components/ScrollToHash';
+import { Helmet } from 'react-helmet';
 
 function AppContent() {
   const location = useLocation();
-  const isLinksPage = location.pathname === '/links' || location.pathname === '/en/links';
-  const isAdminPage = location.pathname === '/studio' || location.pathname === '/en/studio';
+  const { language } = useLanguage();
   const isEnglish = location.pathname.startsWith('/en');
 
-  useEffect(() => {
-    // تحديث meta tags حسب اللغة
-    const updateMetaTags = () => {
-      try {
-        // تحديث العنوان
-        document.title = isEnglish 
-          ? 'Sunlight Electrical Contracting'
-          : 'سن لايت للمقاولات الكهربائية';
+  // حساب سنوات الخبرة
+  const experienceYears = new Date().getFullYear() - 1994;
 
-        // تحديث الوصف
-        const descriptionTag = document.querySelector('meta[name="description"]');
-        if (descriptionTag) {
-          descriptionTag.setAttribute(
-            'content',
-            isEnglish 
-              ? 'Professional electrical contracting services in Bahrain since 1994. Specializing in residential, commercial, and industrial electrical installations.'
-              : 'شركة سن لايت للمقاولات الكهربائية، تأسست عام 1994. متخصصون في التركيبات الكهربائية السكنية والتجارية والصناعية.'
-          );
+  // تحديد محتوى meta tags حسب المسار
+  const getMetaContent = () => {
+    const path = location.pathname.replace('/en', '');
+    
+    const metaContent = {
+      '/': {
+        ar: {
+          title: 'سن لايت للمقاولات الكهربائية',
+          description: `شركة سن لايت للمقاولات الكهربائية، تأسست عام 1994 في البحرين. خبرة ${experienceYears} عاماً في التركيبات الكهربائية للمشاريع السكنية والتجارية والصناعية.`,
+          ogDescription: `شركة سن لايت للمقاولات الكهربائية، خبرة ${experienceYears} عاماً في التركيبات الكهربائية والصيانة في البحرين. نقدم خدمات احترافية ومعتمدة.`
+        },
+        en: {
+          title: 'Sunlight Electrical Contracting',
+          description: `Sunlight Electrical Contracting, established in 1994 in Bahrain with ${experienceYears} years of excellence. Professional electrical installation services.`,
+          ogDescription: `Sunlight Electrical Contracting - ${experienceYears} years of expertise in electrical contracting and maintenance in Bahrain.`
         }
-
-        // تحديث Open Graph tags
-        const ogTitleTag = document.querySelector('meta[property="og:title"]');
-        const ogDescTag = document.querySelector('meta[property="og:description"]');
-        const ogLocaleTag = document.querySelector('meta[property="og:locale"]');
-        const ogUrlTag = document.querySelector('meta[property="og:url"]');
-
-        if (ogTitleTag) {
-          ogTitleTag.setAttribute(
-            'content',
-            isEnglish ? 'Sunlight Electrical Contracting' : 'سن لايت للمقاولات الكهربائية'
-          );
+      },
+      '/links': {
+        ar: {
+          title: 'تواصل معنا - سن لايت للمقاولات الكهربائية',
+          description: 'تواصل مع سن لايت للمقاولات الكهربائية - هاتف: 17241477 973+، واتساب، بريد إلكتروني، أو زيارة مكتبنا في المنامة.',
+          ogDescription: 'احصل على خدمات كهربائية احترافية ومعتمدة - تواصل معنا الآن'
+        },
+        en: {
+          title: 'Contact Us - Sunlight Electrical Contracting',
+          description: 'Contact Sunlight Electrical Contracting - Phone: +973 17241477, WhatsApp, Email, or visit our office.',
+          ogDescription: 'Get professional electrical services - Contact us now'
         }
-        
-        if (ogDescTag) {
-          ogDescTag.setAttribute(
-            'content',
-            isEnglish 
-              ? 'Professional electrical contracting services in Bahrain since 1994'
-              : 'شركة سن لايت للمقاولات الكهربائية، تأسست عام 1994'
-          );
-        }
-
-        if (ogLocaleTag) {
-          ogLocaleTag.setAttribute('content', isEnglish ? 'en' : 'ar');
-        }
-
-        if (ogUrlTag) {
-          ogUrlTag.setAttribute(
-            'content', 
-            isEnglish ? 'https://sunlightec.xyz/en' : 'https://sunlightec.xyz'
-          );
-        }
-
-        // تحديث Twitter tags
-        const twitterTitleTag = document.querySelector('meta[name="twitter:title"]');
-        const twitterDescTag = document.querySelector('meta[name="twitter:description"]');
-
-        if (twitterTitleTag) {
-          twitterTitleTag.setAttribute(
-            'content',
-            isEnglish ? 'Sunlight Electrical Contracting' : 'سن لايت للمقاولات الكهربائية'
-          );
-        }
-        
-        if (twitterDescTag) {
-          twitterDescTag.setAttribute(
-            'content',
-            isEnglish 
-              ? 'Professional electrical contracting services in Bahrain since 1994'
-              : 'شركة سن لايت للمقاولات الكهربائية، تأسست عام 1994'
-          );
-        }
-
-        // تحديث Schema.org
-        const schemaScript = document.querySelector('script[type="application/ld+json"]');
-        if (schemaScript) {
-          const schema = {
-            "@context": "https://schema.org",
-            "@type": "ElectricalContractor",
-            "name": isEnglish ? "Sunlight Electrical Contracting" : "سن لايت للمقاولات الكهربائية",
-            "description": isEnglish 
-              ? "Professional electrical contracting services in Bahrain since 1994"
-              : "شركة سن لايت للمقاولات الكهربائية، تأسست عام 1994",
-            "url": isEnglish ? "https://sunlightec.xyz/en" : "https://sunlightec.xyz",
-            "image": "https://sunlightec.xyz/android-chrome-512x512.png",
-            "telephone": "+97317241477",
-            "address": {
-              "@type": "PostalAddress",
-              "streetAddress": "Building 1234, Road 123",
-              "addressLocality": "Manama",
-              "addressRegion": "Capital Governorate",
-              "addressCountry": "BH"
-            },
-            "inLanguage": isEnglish ? "en" : "ar"
-          };
-          schemaScript.textContent = JSON.stringify(schema);
-        }
-      } catch (error) {
-        console.error('Error updating meta tags:', error);
       }
+      // ... يمكن إضافة المزيد من المسارات
     };
 
-    // تأخير التحديث للتأكد من تحميل الصفحة
-    const timer = setTimeout(updateMetaTags, 0);
-    return () => clearTimeout(timer);
-  }, [location.pathname, isEnglish]);
+    return metaContent[path]?.[isEnglish ? 'en' : 'ar'] || metaContent['/'][isEnglish ? 'en' : 'ar'];
+  };
+
+  const meta = getMetaContent();
 
   return (
-    <div className="app">
-      <ScrollToHash />
-      {!isLinksPage && !isAdminPage && <Header />}
-      <Routes>
-        {/* Arabic Routes */}
-        <Route path="/" element={<Home />} />
-        <Route path="/about" element={<About />} />
-        <Route path="/brand" element={<BrandAssets />} />
-        <Route path="/links" element={<Links />} />
-        <Route path="/studio" element={<Admin />} />
-        <Route path="/redirect" element={<Redirect />} />
+    <>
+      <Helmet>
+        <html lang={isEnglish ? 'en' : 'ar'} dir={isEnglish ? 'ltr' : 'rtl'} />
+        <title>{meta.title}</title>
+        <meta name="description" content={meta.description} />
+        <meta property="og:title" content={meta.title} />
+        <meta property="og:description" content={meta.ogDescription} />
+        <meta property="og:url" content={`https://sunlightec.xyz${location.pathname}`} />
+        <meta property="og:type" content="website" />
+        <meta property="og:image" content="https://sunlightec.xyz/share-image.png" />
+        <meta property="og:locale" content={isEnglish ? 'en' : 'ar'} />
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:title" content={meta.title} />
+        <meta name="twitter:description" content={meta.ogDescription} />
+        <meta name="twitter:image" content="https://sunlightec.xyz/share-image.png" />
+      </Helmet>
+      
+      <div className="app">
+        <ScrollToHash />
+        {!isLinksPage && !isAdminPage && <Header />}
+        <Routes>
+          {/* Arabic Routes */}
+          <Route path="/" element={<Home />} />
+          <Route path="/about" element={<About />} />
+          <Route path="/brand" element={<BrandAssets />} />
+          <Route path="/links" element={<Links />} />
+          <Route path="/studio" element={<Admin />} />
+          <Route path="/redirect" element={<Redirect />} />
 
-        {/* English Routes */}
-        <Route path="/en" element={<Home />} />
-        <Route path="/en/about" element={<About />} />
-        <Route path="/en/brand" element={<BrandAssets />} />
-        <Route path="/en/links" element={<Links />} />
-        <Route path="/en/studio" element={<Admin />} />
+          {/* English Routes */}
+          <Route path="/en" element={<Home />} />
+          <Route path="/en/about" element={<About />} />
+          <Route path="/en/brand" element={<BrandAssets />} />
+          <Route path="/en/links" element={<Links />} />
+          <Route path="/en/studio" element={<Admin />} />
 
-        {/* 404 Page */}
-        <Route path="*" element={<NotFound />} />
-      </Routes>
-      {!isLinksPage && !isAdminPage && <Footer />}
-      {!isLinksPage && !isAdminPage && <CookieConsent />}
-      {!isLinksPage && !isAdminPage && <ScrollToTop />}
-      {typeof window !== 'undefined' && <Analytics />}
-    </div>
+          {/* 404 Page */}
+          <Route path="*" element={<NotFound />} />
+        </Routes>
+        {!isLinksPage && !isAdminPage && <Footer />}
+        {!isLinksPage && !isAdminPage && <CookieConsent />}
+        {!isLinksPage && !isAdminPage && <ScrollToTop />}
+        {typeof window !== 'undefined' && <Analytics />}
+      </div>
+    </>
   );
 }
 
