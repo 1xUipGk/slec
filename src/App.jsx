@@ -15,7 +15,7 @@ import Links from './pages/Links';
 import Admin from './pages/Admin';
 import Redirect from './pages/Redirect';
 import ScrollToHash from './components/ScrollToHash';
-import { HelmetProvider, Helmet } from 'react-helmet-async';
+import { Helmet, HelmetProvider } from 'react-helmet-async';
 
 function AppContent() {
   const location = useLocation();
@@ -117,7 +117,7 @@ function AppContent() {
 
   return (
     <>
-      <Helmet prioritizeSeoTags>
+      <Helmet>
         <html lang={isEnglish ? 'en' : 'ar'} dir={isEnglish ? 'ltr' : 'rtl'} />
         <title>{meta.title}</title>
         <meta name="description" content={meta.description} />
@@ -198,13 +198,13 @@ function App() {
   }
 
   return (
-    <Router>
-      <HelmetProvider>
+    <HelmetProvider>
+      <Router>
         <LanguageProvider>
           <AppContent />
         </LanguageProvider>
-      </HelmetProvider>
-    </Router>
+      </Router>
+    </HelmetProvider>
   );
 }
 
