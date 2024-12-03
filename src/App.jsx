@@ -124,28 +124,38 @@ function AppContent() {
   return (
     <>
       <Helmet>
+        {/* Primary Meta Tags */}
         <html lang={isEnglish ? 'en' : 'ar'} dir={isEnglish ? 'ltr' : 'rtl'} />
         <title>{meta.title}</title>
+        <meta name="title" content={meta.title} />
         <meta name="description" content={meta.description} />
         <meta name="keywords" content={meta.keywords} />
+        <meta name="author" content={isEnglish ? 'Sunlight Electrical Contracting' : 'سن لايت للمقاولات الكهربائية'} />
+        <meta name="robots" content="index, follow" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <meta name="theme-color" content="#16234b" />
+        <meta name="application-name" content={isEnglish ? 'Sunlight Electrical' : 'سن لايت للمقاولات الكهربائية'} />
         
-        {/* OpenGraph Tags */}
-        <meta property="og:title" content={meta.ogTitle} />
-        <meta property="og:description" content={meta.ogDescription} />
-        <meta property="og:url" content={currentUrl} />
+        {/* Open Graph / Facebook */}
         <meta property="og:type" content="website" />
-        <meta property="og:image" content={meta.ogImage} />
+        <meta property="og:url" content={currentUrl} />
+        <meta property="og:title" content={meta.ogTitle || meta.title} />
+        <meta property="og:description" content={meta.ogDescription || meta.description} />
+        <meta property="og:image" content="https://sunlightec.xyz/share-image.png" />
         <meta property="og:image:width" content="1200" />
         <meta property="og:image:height" content="630" />
+        <meta property="og:image:type" content="image/png" />
+        <meta property="og:image:alt" content={meta.title} />
         <meta property="og:locale" content={isEnglish ? 'en_US' : 'ar_BH'} />
         <meta property="og:locale:alternate" content={isEnglish ? 'ar_BH' : 'en_US'} />
         <meta property="og:site_name" content={isEnglish ? 'Sunlight Electrical' : 'سن لايت للمقاولات الكهربائية'} />
         
-        {/* Twitter Tags */}
+        {/* Twitter */}
         <meta name="twitter:card" content="summary_large_image" />
-        <meta name="twitter:title" content={meta.ogTitle} />
-        <meta name="twitter:description" content={meta.ogDescription} />
-        <meta name="twitter:image" content={meta.ogImage} />
+        <meta name="twitter:url" content={currentUrl} />
+        <meta name="twitter:title" content={meta.ogTitle || meta.title} />
+        <meta name="twitter:description" content={meta.ogDescription || meta.description} />
+        <meta name="twitter:image" content="https://sunlightec.xyz/share-image.png" />
         <meta name="twitter:image:alt" content={meta.title} />
         
         {/* Language Alternates */}
@@ -154,11 +164,13 @@ function AppContent() {
         <link rel="alternate" href={alternateUrl} hreflang={isEnglish ? 'ar' : 'en'} />
         <link rel="alternate" href="https://sunlightec.xyz" hreflang="x-default" />
         
-        {/* Additional Meta Tags */}
-        <meta name="robots" content="index, follow" />
-        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <meta name="theme-color" content="#16234b" />
-        <meta name="author" content={isEnglish ? 'Sunlight Electrical Contracting' : 'سن لايت للمقاولات الكهربائية'} />
+        {/* Icons */}
+        <link rel="icon" type="image/x-icon" href="/favicon.ico" />
+        <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
+        <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
+        <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
+        <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#16234b" />
+        <link rel="manifest" href="/manifest.json" />
       </Helmet>
       
       <div className="app">
