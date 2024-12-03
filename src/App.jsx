@@ -34,7 +34,7 @@ function AppContent() {
     const metaContent = {
       '/': {
         ar: {
-          title: 'سن لايت للمقاولات الكهربائية | خدمات كهربائية احترافية',
+          title: 'سن لايت للمقاولات الكهربائية ',
           description: `شركة سن لايت للمقاولات الكهربائية، تأسست عام 1994 في البحرين. خبرة ${experienceYears} عاماً في التركيبات الكهربائية للمشاريع السكنية والتجارية والصناعية.`,
           ogTitle: 'سن لايت للمقاولات الكهربائية | منذ 1994',
           ogDescription: `شركة سن لايت للمقاولات الكهربائية، خبرة ${experienceYears} عاماً في التركيبات الكهربائية والصيانة في البحرين. نقدم خدمات احترافية ومعتمدة.`,
@@ -42,7 +42,7 @@ function AppContent() {
           keywords: 'مقاولات كهربائية البحرين, تركيبات كهربائية, صيانة كهربائية, مقاول كهرباء معتمد'
         },
         en: {
-          title: 'Sunlight Electrical Contracting | Professional Electrical Services',
+          title: 'Sunlight Electrical Contracting',
           description: `Sunlight Electrical Contracting, established in 1994 in Bahrain with ${experienceYears} years of excellence. Professional electrical installation services.`,
           ogTitle: 'Sunlight Electrical Contracting | Since 1994',
           ogDescription: `Professional electrical contracting services in Bahrain since 1994. ${experienceYears} years of expertise in residential, commercial and industrial projects.`,
@@ -52,50 +52,50 @@ function AppContent() {
       },
       '/about': {
         ar: {
-          title: 'من نحن - سن لايت للمقاولات الكهربائية',
+          title: 'من نحن - سن لايت',
           description: `تعرف على شركة سن لايت للمقاولات الكهربائية - ${experienceYears} عاماً من الخبرة والتميز في مجال المقاولات الكهربائية في البحرين.`,
           ogDescription: `سن لايت للمقاولات الكهربائية - ${experienceYears} عاماً من الخبرة. رؤيتنا أن نكون الشركة الرائدة في البحرين.`
         },
         en: {
-          title: 'About Us - Sunlight Electrical Contracting',
+          title: 'About Us - Sunlight',
           description: `About Sunlight Electrical Contracting - ${experienceYears} years of excellence in electrical contracting in Bahrain.`,
           ogDescription: 'Sunlight Electrical Contracting - Leading electrical contracting company in Bahrain.'
         }
       },
       '/links': {
         ar: {
-          title: 'تواصل معنا - سن لايت للمقاولات الكهربائية',
+          title: 'تواصل معنا - سن لايت',
           description: 'تواصل مع سن لايت للمقاولات الكهربائية - هاتف: 17241477 973+، واتساب، بريد إلكتروني، أو زيارة مكتبنا في امنامة.',
           ogDescription: 'احصل على خدمات كهربائية احترافية ومعتمدة - تواصل معنا الآن'
         },
         en: {
-          title: 'Contact Us - Sunlight Electrical Contracting',
+          title: 'Contact Us - Sunlight',
           description: 'Contact Sunlight Electrical Contracting - Phone: +973 17241477, WhatsApp, Email, or visit our office.',
           ogDescription: 'Get professional electrical services - Contact us now'
         }
       },
       '/brand': {
         ar: {
-          title: 'الهوية المؤسسية - سن لايت للمقاولات الكهربائية',
+          title: 'الهوية المؤسسية - سن لايت',
           description: 'الهوية المؤسسية لشركة سن لايت للمقاولات الكهربائية - تحميل شعار الشركة بمختلف الصيغ والأحجام.',
           ogDescription: 'شعار وهوية سن لايت للمقاولات الكهربائية - متوفر بصيغ متعددة للاستخدام'
         },
         en: {
-          title: 'Brand Assets - Sunlight Electrical Contracting',
+          title: 'Brand Assets - Sunlight',
           description: 'Sunlight Electrical Contracting brand identity - Download our logo in various formats and sizes.',
           ogDescription: 'Sunlight Electrical Contracting brand assets - Logo available in multiple formats'
         }
       },
       '/studio': {
         ar: {
-          title: 'استوديو التصميم - سن لايت للمقاولات الكهربائية',
+          title: 'استوديو التصميم - سن لايت',
           description: 'استوديو تصميم المنشورات لشركة سن لايت للمقاولات الكهربائية.',
-          ogDescription: 'استوديو تصميم المنشورات - سن لايت للمقاولات الكهربائية'
+          ogDescription: 'استوديو تصميم المنشورات - سن لايت'
         },
         en: {
-          title: 'Design Studio - Sunlight Electrical Contracting',
+          title: 'Design Studio - Sunlight',
           description: 'Sunlight Electrical Contracting design studio for social media posts.',
-          ogDescription: 'Design Studio - Sunlight Electrical Contracting'
+          ogDescription: 'Design Studio - Sunlight'
         }
       },
       '/404': {
@@ -130,28 +130,27 @@ function AppContent() {
         <meta name="title" content={meta.title} />
         <meta name="description" content={meta.description} />
         <meta name="keywords" content={meta.keywords} />
-        <meta name="author" content={isEnglish ? 'Sunlight Electrical Contracting' : 'سن لايت للمقاولات الكهربائية'} />
-        <meta name="robots" content="index, follow" />
-        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <meta name="theme-color" content="#16234b" />
-        <meta name="application-name" content={isEnglish ? 'Sunlight Electrical' : 'سن لايت للمقاولات الكهربائية'} />
         
         {/* Open Graph / Facebook */}
+        <meta property="og:site_name" content={isEnglish ? 'Sunlight Electrical' : 'سن لايت للمقاولات الكهربائية'} />
         <meta property="og:type" content="website" />
         <meta property="og:url" content={currentUrl} />
         <meta property="og:title" content={meta.ogTitle || meta.title} />
         <meta property="og:description" content={meta.ogDescription || meta.description} />
         <meta property="og:image" content="https://sunlightec.xyz/share-image.png" />
+        <meta property="og:image:secure_url" content="https://sunlightec.xyz/share-image.png" />
         <meta property="og:image:width" content="1200" />
         <meta property="og:image:height" content="630" />
         <meta property="og:image:type" content="image/png" />
         <meta property="og:image:alt" content={meta.title} />
         <meta property="og:locale" content={isEnglish ? 'en_US' : 'ar_BH'} />
         <meta property="og:locale:alternate" content={isEnglish ? 'ar_BH' : 'en_US'} />
-        <meta property="og:site_name" content={isEnglish ? 'Sunlight Electrical' : 'سن لايت للمقاولات الكهربائية'} />
         
         {/* Twitter */}
         <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:site" content="@sunlightec" />
+        <meta name="twitter:creator" content="@sunlightec" />
+        <meta name="twitter:domain" content="sunlightec.xyz" />
         <meta name="twitter:url" content={currentUrl} />
         <meta name="twitter:title" content={meta.ogTitle || meta.title} />
         <meta name="twitter:description" content={meta.ogDescription || meta.description} />
