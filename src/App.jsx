@@ -15,7 +15,7 @@ import Links from './pages/Links';
 import Admin from './pages/Admin';
 import Redirect from './pages/Redirect';
 import ScrollToHash from './components/ScrollToHash';
-import { Helmet } from 'react-helmet';
+import { HelmetProvider, Helmet } from 'react-helmet-async';
 
 function AppContent() {
   const location = useLocation();
@@ -59,7 +59,7 @@ function AppContent() {
       '/links': {
         ar: {
           title: 'تواصل معنا - سن لايت للمقاولات الكهربائية',
-          description: 'تواصل مع سن لايت للمقاولات الكهربائية - هاتف: 17241477 973+، واتساب، بريد إلكتروني، أو زيارة مكتبنا في ا��منامة.',
+          description: 'تواصل مع سن لايت للمقاولات الكهربائية - هاتف: 17241477 973+، واتساب، بريد إلكتروني، أو زيارة مكتبنا في امنامة.',
           ogDescription: 'احصل على خدمات كهربائية احترافية ومعتمدة - تواصل معنا الآن'
         },
         en: {
@@ -117,7 +117,7 @@ function AppContent() {
 
   return (
     <>
-      <Helmet>
+      <Helmet prioritizeSeoTags>
         <html lang={isEnglish ? 'en' : 'ar'} dir={isEnglish ? 'ltr' : 'rtl'} />
         <title>{meta.title}</title>
         <meta name="description" content={meta.description} />
@@ -199,9 +199,11 @@ function App() {
 
   return (
     <Router>
-      <LanguageProvider>
-        <AppContent />
-      </LanguageProvider>
+      <HelmetProvider>
+        <LanguageProvider>
+          <AppContent />
+        </LanguageProvider>
+      </HelmetProvider>
     </Router>
   );
 }
