@@ -331,8 +331,6 @@ function Studio() {
   // إضافة دالة للتوسيط فقط
   const handleCenterOnly = () => {
     if (!uploadedImage) return;
-    
-    // توسيط الصورة أفقياً
     const centerX = (CANVAS_WIDTH - uploadedImage.width * scale) / 2;
     setImagePosition(prev => ({
       ...prev,
@@ -343,8 +341,6 @@ function Studio() {
   // إضافة دالة للتوسيط الرأسي
   const handleVerticalCenter = () => {
     if (!uploadedImage) return;
-    
-    // توسيط الصورة رأسياً
     const centerY = (CANVAS_HEIGHT - uploadedImage.height * scale) / 2;
     setImagePosition(prev => ({
       ...prev,
@@ -569,4 +565,4 @@ function Studio() {
   );
 }
 
-export default Studio;
+export default Studio; 
