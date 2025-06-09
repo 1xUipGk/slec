@@ -38,6 +38,7 @@ function Studio() {
   const overlayRef = useRef(null);
   
   const CANVAS_SIZE = 1080;
+  const CANVAS_HEIGHT = 1350;
 
   const MAX_TEXT_LENGTH = 50;
 
@@ -100,7 +101,7 @@ function Studio() {
     const canvas = canvasRef.current;
     const ctx = canvas.getContext('2d');
     
-    ctx.clearRect(0, 0, CANVAS_SIZE, CANVAS_SIZE);
+    ctx.clearRect(0, 0, CANVAS_SIZE, CANVAS_HEIGHT);
     
     if (uploadedImage) {
       ctx.save();
@@ -111,7 +112,7 @@ function Studio() {
     }
     
     if (overlayRef.current) {
-      ctx.drawImage(overlayRef.current, 0, 0, CANVAS_SIZE, CANVAS_SIZE);
+      ctx.drawImage(overlayRef.current, 0, 0, CANVAS_SIZE, CANVAS_HEIGHT);
     }
 
     // رسم النصوص في الأعلى
@@ -555,7 +556,7 @@ function Studio() {
             <canvas
               ref={canvasRef}
               width={CANVAS_SIZE}
-              height={CANVAS_SIZE}
+              height={CANVAS_HEIGHT}
               onMouseDown={handleMouseDown}
               onMouseMove={handleMouseMove}
               onMouseUp={handleMouseUp}
