@@ -29,7 +29,7 @@ function Studio() {
   const [textColor2, setTextColor2] = useState('#ffffff');
   const [fontSize1, setFontSize1] = useState(48);
   const [fontSize2, setFontSize2] = useState(32);
-  const [textPosition, setTextPosition] = useState({ x: 1080/2, y: 1080/2 });
+  const [textPosition, setTextPosition] = useState({ x: 1080/2, y: 1350/2 });
   const [isEditingText, setIsEditingText] = useState(false);
   const [isEditingText1, setIsEditingText1] = useState(false);
   const [isEditingText2, setIsEditingText2] = useState(false);
@@ -37,7 +37,8 @@ function Studio() {
   const canvasRef = useRef(null);
   const overlayRef = useRef(null);
   
-  const CANVAS_SIZE = 1080;
+  const CANVAS_WIDTH = 1080;
+  const CANVAS_HEIGHT = 1350;
 
   const MAX_TEXT_LENGTH = 50;
 
@@ -100,7 +101,7 @@ function Studio() {
     const canvas = canvasRef.current;
     const ctx = canvas.getContext('2d');
     
-    ctx.clearRect(0, 0, CANVAS_SIZE, CANVAS_SIZE);
+    ctx.clearRect(0, 0, CANVAS_WIDTH, CANVAS_HEIGHT);
     
     if (uploadedImage) {
       ctx.save();
@@ -111,7 +112,7 @@ function Studio() {
     }
     
     if (overlayRef.current) {
-      ctx.drawImage(overlayRef.current, 0, 0, CANVAS_SIZE, CANVAS_SIZE);
+      ctx.drawImage(overlayRef.current, 0, 0, CANVAS_WIDTH, CANVAS_HEIGHT);
     }
 
     // رسم النصوص في الأعلى
@@ -127,7 +128,7 @@ function Studio() {
       ctx.shadowBlur = 4;
       ctx.shadowOffsetX = 2;
       ctx.shadowOffsetY = 2;
-      ctx.fillText(text1, CANVAS_SIZE - 50, 75); // موقع النص الرئيسي
+      ctx.fillText(text1, CANVAS_WIDTH - 50, 75); // موقع النص الرئيسي
       ctx.restore();
     }
     
@@ -143,7 +144,7 @@ function Studio() {
       ctx.shadowBlur = 4;
       ctx.shadowOffsetX = 2;
       ctx.shadowOffsetY = 2;
-      ctx.fillText(text2, CANVAS_SIZE - 50, 75 + fontSize1 + 10); // موقع النص الفرعي تحت الرئيسي مباشرة
+      ctx.fillText(text2, CANVAS_WIDTH - 50, 75 + fontSize1 + 10); // موقع النص الفرعي تحت الرئيسي مباشرة
       ctx.restore();
     }
   };
@@ -236,47 +237,47 @@ function Studio() {
   const handleFitToFrame = () => {
     if (!uploadedImage) return;
     const ratio = Math.min(
-      CANVAS_SIZE / uploadedImage.width,
-      CANVAS_SIZE / uploadedImage.height
+      CANVAS_WIDTH / uploadedImage.width,
+      CANVAS_HEIGHT / uploadedImage.height
     );
     setScale(ratio);
     setImagePosition({
-      x: (CANVAS_SIZE - uploadedImage.width * ratio) / 2,
-      y: (CANVAS_SIZE - uploadedImage.height * ratio) / 2
+      x: (CANVAS_WIDTH - uploadedImage.width * ratio) / 2,
+      y: (CANVAS_HEIGHT - uploadedImage.height * ratio) / 2
     });
   };
 
   const handleCenterImage = () => {
     if (!uploadedImage) return;
     setImagePosition({
-      x: (CANVAS_SIZE - uploadedImage.width * scale) / 2,
-      y: (CANVAS_SIZE - uploadedImage.height * scale) / 2
+      x: (CANVAS_WIDTH - uploadedImage.width * scale) / 2,
+      y: (CANVAS_HEIGHT - uploadedImage.height * scale) / 2
     });
   };
 
   const handleCoverImage = () => {
     if (!uploadedImage) return;
     const ratio = Math.max(
-      CANVAS_SIZE / uploadedImage.width,
-      CANVAS_SIZE / uploadedImage.height
+      CANVAS_WIDTH / uploadedImage.width,
+      CANVAS_HEIGHT / uploadedImage.height
     );
     setScale(ratio);
     setImagePosition({
-      x: (CANVAS_SIZE - uploadedImage.width * ratio) / 2,
-      y: (CANVAS_SIZE - uploadedImage.height * ratio) / 2
+      x: (CANVAS_WIDTH - uploadedImage.width * ratio) / 2,
+      y: (CANVAS_HEIGHT - uploadedImage.height * ratio) / 2
     });
   };
 
   const handleContainImage = () => {
     if (!uploadedImage) return;
     const ratio = Math.min(
-      CANVAS_SIZE / uploadedImage.width,
-      CANVAS_SIZE / uploadedImage.height
+      CANVAS_WIDTH / uploadedImage.width,
+      CANVAS_HEIGHT / uploadedImage.height
     );
     setScale(ratio);
     setImagePosition({
-      x: (CANVAS_SIZE - uploadedImage.width * ratio) / 2,
-      y: (CANVAS_SIZE - uploadedImage.height * ratio) / 2
+      x: (CANVAS_WIDTH - uploadedImage.width * ratio) / 2,
+      y: (CANVAS_HEIGHT - uploadedImage.height * ratio) / 2
     });
   };
 
@@ -332,7 +333,7 @@ function Studio() {
     if (!uploadedImage) return;
     
     // توسيط الصورة أفقياً
-    const centerX = (CANVAS_SIZE - uploadedImage.width * scale) / 2;
+    const centerX = (CANVAS_WIDTH - uploadedImage.width * scale) / 2;
     setImagePosition(prev => ({
       ...prev,
       x: centerX
@@ -344,7 +345,7 @@ function Studio() {
     if (!uploadedImage) return;
     
     // توسيط الصورة رأسياً
-    const centerY = (CANVAS_SIZE - uploadedImage.height * scale) / 2;
+    const centerY = (CANVAS_HEIGHT - uploadedImage.height * scale) / 2;
     setImagePosition(prev => ({
       ...prev,
       y: centerY
@@ -554,8 +555,8 @@ function Studio() {
             )}
             <canvas
               ref={canvasRef}
-              width={CANVAS_SIZE}
-              height={CANVAS_SIZE}
+              width={CANVAS_WIDTH}
+              height={CANVAS_HEIGHT}
               onMouseDown={handleMouseDown}
               onMouseMove={handleMouseMove}
               onMouseUp={handleMouseUp}
@@ -568,4 +569,4 @@ function Studio() {
   );
 }
 
-export default Studio; 
+export default Studio;
